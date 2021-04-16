@@ -24,23 +24,24 @@ namespace ChartTester {
 		///  the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.zoomableIcicle1 = new InteractiveCharts.ZoomableIcicle();
+			this.zoomableSunburst1 = new InteractiveCharts.ZoomableSunburst();
 			this.SuspendLayout();
 			// 
-			// zoomableIcicle1
+			// zoomableSunburst1
 			// 
-			this.zoomableIcicle1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.zoomableIcicle1.Location = new System.Drawing.Point(156, 76);
-			this.zoomableIcicle1.Name = "zoomableIcicle1";
-			this.zoomableIcicle1.Size = new System.Drawing.Size(353, 290);
-			this.zoomableIcicle1.TabIndex = 0;
+			this.zoomableSunburst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.zoomableSunburst1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.zoomableSunburst1.Location = new System.Drawing.Point(0, 0);
+			this.zoomableSunburst1.Name = "zoomableSunburst1";
+			this.zoomableSunburst1.Size = new System.Drawing.Size(992, 726);
+			this.zoomableSunburst1.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.zoomableIcicle1);
+			this.ClientSize = new System.Drawing.Size(992, 726);
+			this.Controls.Add(this.zoomableSunburst1);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.ResumeLayout(false);
@@ -49,7 +50,7 @@ namespace ChartTester {
 
 		#endregion
 
-		private InteractiveCharts.ZoomableIcicle zoomableIcicle1;
+		private InteractiveCharts.ZoomableSunburst zoomableSunburst1;
 	}
 }
 

@@ -1,35 +1,38 @@
-﻿using CefSharp;
+﻿// Copyright © 2010-2015 The CefSharp Authors. All rights reserved.
+//
+// Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
+
 using CefSharp.SchemeHandler;
 using CefSharp.WinForms;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Windows.Forms;
 
-namespace InteractiveCharts {
-	public static class InteractiveCharts {
+namespace CefSharp.MinimalExample.WinForms
+{
+    public class Program
+    {
+        [STAThread]
+        public static int Main(string[] args)
+        {
 
-        private static bool initialized = false;
-
-		public static void Initialize() {
-            if (initialized) return;
-            else initialized = true;
 #if ANYCPU
             //Only required for PlatformTarget of AnyCPU
             AppDomain.CurrentDomain.AssemblyResolve += Resolver;
 #endif
 
-			//For Windows 7 and above, best to include relevant app.manifest entries as well
-			Cef.EnableHighDPISupport();
+            //For Windows 7 and above, best to include relevant app.manifest entries as well
+            Cef.EnableHighDPISupport();
 
-            //Set up cach location
-            var settings = new CefSettings() {
+            //Set the browser cache location
+            var settings = new CefSettings()
+            {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
 
-            //Set the resource folder flor loading local resources
-            string resourceFolder = Path.GetFullPath("Resources");
+            //Set the resource scheme to load files from the filesystem
+            string resourceFolder = Path.GetFullPath("Chart");
             settings.RegisterScheme(new CefCustomScheme {
                 SchemeName = "localfolder",
                 DomainName = "cefsharp",
@@ -54,6 +57,11 @@ namespace InteractiveCharts {
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+
+            var browser = new BrowserForm();
+            Application.Run(browser);
+
+            return 0;
         }
 
         // Will attempt to load missing assembly from either x86 or x64 subdir
@@ -76,6 +84,5 @@ namespace InteractiveCharts {
             return null;
         }
 #endif
-
     }
 }
