@@ -24,13 +24,32 @@ namespace ChartTester {
 		///  the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.components = new System.ComponentModel.Container();
+			this.zoomableIcicle1 = new InteractiveCharts.ZoomableIcicle();
+			this.SuspendLayout();
+			// 
+			// zoomableIcicle1
+			// 
+			this.zoomableIcicle1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.zoomableIcicle1.Location = new System.Drawing.Point(156, 76);
+			this.zoomableIcicle1.Name = "zoomableIcicle1";
+			this.zoomableIcicle1.Size = new System.Drawing.Size(353, 290);
+			this.zoomableIcicle1.TabIndex = 0;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.zoomableIcicle1);
+			this.Name = "Form1";
 			this.Text = "Form1";
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private InteractiveCharts.ZoomableIcicle zoomableIcicle1;
 	}
 }
 

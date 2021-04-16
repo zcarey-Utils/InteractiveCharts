@@ -11,6 +11,8 @@ namespace ChartTester {
 		/// </summary>
 		[STAThread]
 		static void Main() {
+			InteractiveCharts.InteractiveCharts.Initialize();
+
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
