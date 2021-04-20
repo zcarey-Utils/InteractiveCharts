@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+    <title>Vasturiano</title>
+    <script src="../d3.v6.js"></script>
+    <script src="../fileUtil.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const color = d3.scaleOrdinal(d3.schemePaired);
+
+        var data = readJSON("flare.json");
+        Sunburst()
+            .data(data)
+            .label('name')
+            .size('size')
+            .color((d, parent) => color(parent ? parent.data.name : null))
+            .tooltipContent((d, node) => `Size: <i>${node.value}</i>`)
+            (document.getElementById('chart'));
+    </script>
+</body>
+</html>

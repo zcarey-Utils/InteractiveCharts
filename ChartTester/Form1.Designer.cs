@@ -24,24 +24,24 @@ namespace ChartTester {
 		///  the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.zoomableSunburst1 = new InteractiveCharts.ZoomableSunburst();
+			this.vasturiano1 = new InteractiveCharts.Vasturiano();
 			this.SuspendLayout();
 			// 
-			// zoomableSunburst1
+			// vasturiano1
 			// 
-			this.zoomableSunburst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.zoomableSunburst1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.zoomableSunburst1.Location = new System.Drawing.Point(0, 0);
-			this.zoomableSunburst1.Name = "zoomableSunburst1";
-			this.zoomableSunburst1.Size = new System.Drawing.Size(992, 726);
-			this.zoomableSunburst1.TabIndex = 0;
+			this.vasturiano1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.vasturiano1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.vasturiano1.Location = new System.Drawing.Point(0, 0);
+			this.vasturiano1.Name = "vasturiano1";
+			this.vasturiano1.Size = new System.Drawing.Size(992, 726);
+			this.vasturiano1.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(992, 726);
-			this.Controls.Add(this.zoomableSunburst1);
+			this.Controls.Add(this.vasturiano1);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.ResumeLayout(false);
@@ -50,7 +50,7 @@ namespace ChartTester {
 
 		#endregion
 
-		private InteractiveCharts.ZoomableSunburst zoomableSunburst1;
+		private InteractiveCharts.Vasturiano vasturiano1;
 	}
 }
 
