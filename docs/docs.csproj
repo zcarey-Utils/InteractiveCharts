@@ -35,6 +35,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="BetterSunburst\flare.json" />
+    <None Include="LimitedSunburst\flare.json" />
+    <None Include="Sunburst\flare.json" />
+    <None Include="VasturianoSunburst\flare.json" />
+    <None Include="ZoomableSunburst\flare.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BetterSunburst\betterSunburst.js" />
@@ -44,7 +48,14 @@
     <Content Include="d3.v6.js" />
     <Content Include="fileUtil.js" />
     <Content Include="index.html" />
-    <Content Include="Test.html" />
+    <Content Include="LimitedSunburst\index.html" />
+    <Content Include="LimitedSunburst\limitedSunburst.js" />
+    <Content Include="Sunburst\index.html" />
+    <Content Include="Sunburst\script.js" />
+    <Content Include="VasturianoSunburst\index.html" />
+    <Content Include="VasturianoSunburst\VasturianoSunburst.js" />
+    <Content Include="ZoomableSunburst\index.html" />
+    <Content Include="ZoomableSunburst\script.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
