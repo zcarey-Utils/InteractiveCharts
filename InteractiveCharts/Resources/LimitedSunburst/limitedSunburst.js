@@ -1,6 +1,6 @@
 ﻿width = 1000;
 radius = width / 6;
-data = readJSON("SunburstTest/flare.json");
+data = readJSON("LimitedSunburst/flare.json");
 
 color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 format = d3.format(",d")

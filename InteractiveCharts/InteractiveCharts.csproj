@@ -12,7 +12,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\BetterSunburst\flare.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\BetterSunburst\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\BetterSunburst\betterSunburst.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\d3.v4.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\d3.v5.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\d3.v6.js">
@@ -21,13 +33,13 @@
     <None Update="Resources\fileUtil.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\SunburstTest\flare.json">
+    <None Update="Resources\LimitedSunburst\flare.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\SunburstTest\index.html">
+    <None Update="Resources\LimitedSunburst\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\SunburstTest\sunburst.js">
+    <None Update="Resources\LimitedSunburst\limitedSunburst.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Sunburst\flare.json">

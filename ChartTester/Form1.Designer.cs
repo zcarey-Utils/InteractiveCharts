@@ -24,24 +24,24 @@ namespace ChartTester {
 		///  the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.vasturianoSunburst1 = new InteractiveCharts.VasturianoSunburst();
+			this.betterSunburst1 = new InteractiveCharts.BetterSunburst();
 			this.SuspendLayout();
 			// 
-			// vasturianoSunburst1
+			// betterSunburst1
 			// 
-			this.vasturianoSunburst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.vasturianoSunburst1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.vasturianoSunburst1.Location = new System.Drawing.Point(0, 0);
-			this.vasturianoSunburst1.Name = "vasturianoSunburst1";
-			this.vasturianoSunburst1.Size = new System.Drawing.Size(1090, 739);
-			this.vasturianoSunburst1.TabIndex = 0;
+			this.betterSunburst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.betterSunburst1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.betterSunburst1.Location = new System.Drawing.Point(0, 0);
+			this.betterSunburst1.Name = "betterSunburst1";
+			this.betterSunburst1.Size = new System.Drawing.Size(1090, 739);
+			this.betterSunburst1.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1090, 739);
-			this.Controls.Add(this.vasturianoSunburst1);
+			this.Controls.Add(this.betterSunburst1);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.ResumeLayout(false);
@@ -50,7 +50,8 @@ namespace ChartTester {
 
 		#endregion
 
-		private InteractiveCharts.VasturianoSunburst vasturianoSunburst1;
+		private InteractiveCharts.LimitedSunburst testSunburst1;
+		private InteractiveCharts.BetterSunburst betterSunburst1;
 	}
 }
 
