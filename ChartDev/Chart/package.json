@@ -1,0 +1,14 @@
+{
+  "name": "@git-ashish/d3-sunburst-zoomable",
+  "main": "28e1d1604b2e5212@272.js",
+  "version": "272.0.0",
+  "homepage": "https://observablehq.com/@git-ashish/d3-sunburst-zoomable",
+  "author": {
+    "name": "Ashish Singh",
+    "url": "https://observablehq.com/@git-ashish"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

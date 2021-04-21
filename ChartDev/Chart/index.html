@@ -1,33 +1,39 @@
-﻿<html>
+<html>
 <head>
-    <title>Chart Dev</title>
-    <script src="d3.v6.js"></script>
-    <script src="fileUtil.js"></script>
-    <style type="text/css" media="screen">
+    <title>D3 Sunburst — Zoomable</title>
+<!--    <link rel="stylesheet" type="text/css" href="inspector.css"> -->
+    <style>
         body {
             background: #eee;
             margin: 0;
+            font-family: Sans-serif;
+            font-size: 11px;
         }
 
         svg {
             display: block;
-/*            border: 1px  solid #ccc;
-*/            position: absolute;
-/*           top: 5%;
-            left: 5%;
-*/            width: 100%;
+            position: absolute;
+            width: 100%;
             height: 100%;
             background: #fff;
-        }
-
-        .face {
-            stroke: #000;
-            stroke-width: 20px;
-            stroke-linecap: round;
         }
     </style>
 </head>
 <body>
+    <script src="d3.v5.js"></script>
+    <script src="fileUtil.js"></script>
+    <!--    <script src="28e1d1604b2e5212@272.js"></script>
+        <script src="runtime.js"></script>
+    <script type="module">
+
+    //import define from "./index.js";
+    //import {Runtime, Library, Inspector} from "./runtime.js";
+
+    const runtime = new Runtime();
+    const main = runtime.module(define, Inspector.into(document.body));
+
+    </script>
+        -->
     <div id="container"></div>
     <script src="script.js"></script>
 </body>

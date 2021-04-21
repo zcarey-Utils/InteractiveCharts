@@ -66,11 +66,11 @@ namespace InteractiveCharts {
 				/*
 								browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
 								browser.LoadingStateChanged += OnLoadingStateChanged;
-								browser.ConsoleMessage += OnBrowserConsoleMessage;
 								browser.StatusMessage += OnBrowserStatusMessage;
 								browser.TitleChanged += OnBrowserTitleChanged;
 								browser.AddressChanged += OnBrowserAddressChanged;
 				*/
+				browser.ConsoleMessage += OnBrowserConsoleMessage;
 				/*var version = string.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion);
 
 				// .NET Core
@@ -82,6 +82,14 @@ namespace InteractiveCharts {
 			}
 
 			base.OnLoad(e);
+		}
+
+		private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs e) {
+			if (e.Level >= LogSeverity.Error) {
+				this.Parent.InvokeOnUiThreadIfRequired(() => {
+					MessageBox.Show(e.Message + ": " + e.Source + " at Line " + e.Line, DesignModeName);
+				});
+			}
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {

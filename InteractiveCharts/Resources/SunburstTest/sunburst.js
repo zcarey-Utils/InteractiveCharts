@@ -1,6 +1,6 @@
-﻿width = 932;
+﻿width = 1000;
 radius = width / 6;
-data = readJSON("Sunburst/flare.json");
+data = readJSON("SunburstTest/flare.json");
 
 color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 format = d3.format(",d")
@@ -24,13 +24,14 @@ function partition(data) {
 const root = partition(data);
 
 root.each(d => d.current = d);
+
 /*
 const svg = d3.create("svg")
   .attr("viewBox", [0, 0, width, width])
   .style("font", "10px sans-serif");
   */
 const svg = d3
-    .select('.container')
+    .select('div#container')
     .append('svg')
     .attr("viewBox", [0, 0, width, width])
     .style("font", "10px sans-serif");

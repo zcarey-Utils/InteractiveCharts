@@ -1,6 +1,6 @@
-﻿width = 975
-radius = width / 2
-data = readJSON("flare.json")
+﻿const size = 1000;
+radius = size / 2
+data = readJSON("Sunburst/flare.json")
 
 partition = data => d3.partition()
     .size([2 * Math.PI, radius])
@@ -18,18 +18,33 @@ arc = d3.arc()
     .padRadius(radius / 2)
     .innerRadius(d => d.y0)
     .outerRadius(d => d.y1 - 1)
-
+/*
 function autoBox() {
     document.body.appendChild(this);
     const { x, y, width, height } = this.getBBox();
     document.body.removeChild(this);
     return [x, y, width, height];
 }
-
+*/
 const root = partition(data);
 
 //const svg = d3.create("svg");
-const svg = d3.select('.container').append('svg')
+//const svg = d3.select('.container').append('svg')
+/*const svg = d3.select('.container')
+    .append("div")
+    // Container class to make it responsive.
+    .classed("svg-container", true)
+    .append("svg")
+    // Responsive SVG needs these 2 attributes and no width and height attr.
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("viewBox", "" + (-width/2) + " " + (-width/2) + " " + width + " " + width)
+    // Class to make it responsive.
+    .classed("svg-content-responsive", true)*/
+
+
+const svg = d3.select("div#container")
+    .append("svg")
+    .attr("viewBox", [-size/2, -size/2, size, size]);
 
 svg.append("g")
     .attr("fill-opacity", 0.6)
@@ -57,4 +72,5 @@ svg.append("g")
     .attr("dy", "0.35em")
     .text(d => d.data.name);
 
-return svg.attr("viewBox", autoBox).node();
+//svg.attr("viewBox", autoBox).node();
+//svg.attr("viewBox", [0, 0, width, width])

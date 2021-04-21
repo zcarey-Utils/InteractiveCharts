@@ -12,10 +12,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\d3.v4.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\d3.v6.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\fileUtil.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\SunburstTest\flare.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\SunburstTest\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\SunburstTest\sunburst.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Sunburst\flare.json">
@@ -24,16 +36,16 @@
     <None Update="Resources\Sunburst\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Sunburst\zoomableSunburst.js">
+    <None Update="Resources\Sunburst\script.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Vasturiano\flare.json">
+    <None Update="Resources\VasturianoSunburst\flare.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Vasturiano\index.html">
+    <None Update="Resources\VasturianoSunburst\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Vasturiano\script.js">
+    <None Update="Resources\VasturianoSunburst\VasturianoSunburst.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\ZoomableSunburst\flare.json">
@@ -42,7 +54,7 @@
     <None Update="Resources\ZoomableSunburst\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\ZoomableSunburst\zoomableSunburst.js">
+    <None Update="Resources\ZoomableSunburst\script.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
