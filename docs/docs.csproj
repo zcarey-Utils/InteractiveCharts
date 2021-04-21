@@ -34,8 +34,15 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="BetterSunburst\flare.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BetterSunburst\betterSunburst.js" />
+    <Content Include="BetterSunburst\index.html" />
+    <Content Include="d3.v4.js" />
+    <Content Include="d3.v5.js" />
+    <Content Include="d3.v6.js" />
+    <Content Include="fileUtil.js" />
     <Content Include="index.html" />
     <Content Include="Test.html" />
   </ItemGroup>
