@@ -63,20 +63,30 @@ const svg = container.append("svg")
     .attr("viewBox", [-width / 2, -width / 2, width, width]);
 
 //Add tooltip
+const tooltipPadding = 15; //Pixels from the bottom of the screen before it flips sides
 const tooltip = container.append('div')
+    .attr('id', 'tooltip')
     .attr('class', 'sunburst-tooltip');
+const htmlTooltip = document.getElementById('tooltip');
 
 //event to move the tooltip with the mouse
 container.on('mousemove', function (ev) {
     var mousePos = d3Pointer(ev);
+
+    var y = mousePos[1];
+    var dy = 21;
+    var height = htmlTooltip.offsetHeight;
+    if ((y + dy + height + tooltipPadding) >= window.innerHeight) {
+        dy = -21 - height;
+    }
     tooltip.style('left', mousePos[0] + 'px')
-        .style('top', mousePos[1] + 'px')
-        .style('transform', "translate(-".concat(mousePos[0] / window.innerWidth * 100, "%, 21px)")); // adjust horizontal position to not exceed canvas boundaries
+        .style('top', y + 'px')
+        .style('transform', "translate(-".concat(mousePos[0] / window.innerWidth * 100, "%, " + dy + "px)")); // adjust horizontal position to not exceed canvas boundaries
 });
 
 //Reset focus by clicking on the canvas
 svg.on('click', function () {
-//    focusOn(null); // Reset zoom on canvas click
+    focusOn(root); // Reset zoom on canvas click
 });
 
 //Reset tooltip? when hovered on canvas
@@ -119,7 +129,10 @@ let paths = g.append("g")
 
 paths.filter(d => d.children)
     .style('cursor', 'pointer')
-    .on("click", clicked)
+    .on("click", function (ev, p) {
+        ev.stopPropagation();
+        focusOn(p);
+    });
 
 const labels = g.append("g")
     .attr("pointer-events", "none")
@@ -159,8 +172,7 @@ function arcText(d, sKey) {
     return sKey; //(sKey || '').toString().slice(0, iMaxLength);
 }
 
-function clicked(ev, p) {
-    ev.stopPropagation();
+function focusOn(p) {
     /**
      * First time, mark the clicked node as zoomed;
      * Second time, un-mark the node as zoomed.
