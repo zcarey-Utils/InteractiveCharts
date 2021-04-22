@@ -26,6 +26,31 @@ let oLastZoomed = root;
 
 root.each(d => d.current = d);
 
+function sourceEvent(event) {
+    let sourceEvent;
+    while (sourceEvent = event.sourceEvent) event = sourceEvent;
+    return event;
+}
+
+function d3Pointer(event, node) {
+    event = sourceEvent(event);
+    if (node === undefined) node = event.currentTarget;
+    if (node) {
+        var svg = node.ownerSVGElement || node;
+        if (svg.createSVGPoint) {
+            var point = svg.createSVGPoint();
+            point.x = event.clientX, point.y = event.clientY;
+            point = point.matrixTransform(node.getScreenCTM().inverse());
+            return [point.x, point.y];
+        }
+        if (node.getBoundingClientRect) {
+            var rect = node.getBoundingClientRect();
+            return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+        }
+    }
+    return [event.pageX, event.pageY];
+}
+
 /*const svg = d3.select(DOM.svg(width, width))
     .style("width", "100%")
     .style("height", "auto")
@@ -33,9 +58,45 @@ root.each(d => d.current = d);
     .style("font", "10px sans-serif")
     .style("box-sizing", "border-box");
     */
-const svg = d3.select("div#container")
-    .append("svg")
-    .attr("viewBox", [-width / 2, -width / 2, width, width])
+const container = d3.select("div#container");
+const svg = container.append("svg")
+    .attr("viewBox", [-width / 2, -width / 2, width, width]);
+
+//Add tooltip
+const tooltip = container.append('div')
+    .attr('class', 'sunburst-tooltip');
+
+//event to move the tooltip with the mouse
+container.on('mousemove', function (ev) {
+    var mousePos = d3Pointer(ev);
+    tooltip.style('left', mousePos[0] + 'px')
+        .style('top', mousePos[1] + 'px')
+        .style('transform', "translate(-".concat(mousePos[0] / window.innerWidth * 100, "%, 21px)")); // adjust horizontal position to not exceed canvas boundaries
+});
+
+//Reset focus by clicking on the canvas
+svg.on('click', function () {
+//    focusOn(null); // Reset zoom on canvas click
+});
+
+//Reset tooltip? when hovered on canvas
+svg.on('mouseover', function () {
+    //onHover(null);
+});
+
+//Tooltip title
+tooltipTitle = function (data, d) {
+    //d.ancestors().map(d => d.data.name).reverse().join(' &rarr; ')
+    var excludeRoot = false;
+    return getNodeStack(d).slice(excludeRoot ? 1 : 0).map(function (d) {
+        return d.data.name;
+    }).join(' &rarr; ');
+};
+
+//Temporary tooltip content
+tooltipContent = function (data, d) {
+    return "Size: " + format(d.value);
+};
 
 const g = svg.append("g");
 
@@ -49,14 +110,16 @@ let paths = g.append("g")
     .attr("d", arc)
     .attr("id", function (d, i) {
         return 'cp-' + i;
-    });
+    })
+    .on('mouseover', sliceMouseOver)
+    .on('mouseout', sliceMouseOut);
 
-paths.append("title")
-    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+//paths.append("title")
+//    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
 
 paths.filter(d => d.children)
     .style('cursor', 'pointer')
-    .on("click", clicked);
+    .on("click", clicked)
 
 const labels = g.append("g")
     .attr("pointer-events", "none")
@@ -96,8 +159,8 @@ function arcText(d, sKey) {
     return sKey; //(sKey || '').toString().slice(0, iMaxLength);
 }
 
-function clicked(p) {
-
+function clicked(ev, p) {
+    ev.stopPropagation();
     /**
      * First time, mark the clicked node as zoomed;
      * Second time, un-mark the node as zoomed.
@@ -153,7 +216,30 @@ function clicked(p) {
     labels.transition(t)
         .attr("fill-opacity", d => +labelVisible(d.target))
         .attrTween("transform", d => () => labelTransform(d.current));
+}
 
+function sliceMouseOver (ev, d) {
+    ev.stopPropagation();
+    tooltip.style('display', 'inline');
+    tooltip.html("<div class=\"tooltip-title\">"
+        .concat(tooltipTitle ? tooltipTitle(d.data, d) : "", "</div>")
+        .concat(tooltipContent(d.data, d)));
+}
+
+function sliceMouseOut() {
+    tooltip.style('display', 'none');
+}
+
+function getNodeStack(d) {
+    var stack = [];
+    var curNode = d;
+
+    while (curNode) {
+        stack.unshift(curNode);
+        curNode = curNode.parent;
+    }
+
+    return stack;
 }
 
 
