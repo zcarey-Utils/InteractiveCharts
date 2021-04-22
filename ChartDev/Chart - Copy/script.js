@@ -2,10 +2,64 @@
 radius = size / 2
 data = readJSON("flare.json")
 
-const svg = d3.select("div#container")
+const container = d3.select("div#container");
+const svg = container
     .append("svg")
-    .attr("viewBox", [-size / 2, -size / 2, size, size])
-    .on('click', () => focusOn()); // Reset zoom on canvas click
+    .attr("viewBox", [-size / 2, -size / 2, size, size]);
+
+//Add tooltip
+const tooltip = container.append('div').attr('class', 'sunburst-tooltip');
+container.on('mousemove', function (ev) {
+    var mousePos = d3Pointer(ev);
+    tooltip.style('left', mousePos[0] + 'px')
+        .style('top', mousePos[1] + 'px');
+        //.style('transform', "translate(-".concat(mousePos[0] / window.innerWidth * 100, "%, 21px)")); // adjust horizontal position to not exceed canvas boundaries
+});
+
+//Reset focus by clicking on the canvas
+svg.on('click', function () {
+    focusOn(null); // Reset zoom on canvas click
+});
+
+//Reset tooltip? when hovered on canvas
+svg.on('mouseover', function () {
+    //onHover(null);
+});
+
+//Temporary tooltip title
+tooltipTitle = function (data, d) {
+    return "I am a title!";
+};
+
+//Temporary tooltip content
+tooltipContent = function (data, d) {
+    return "I am content!";
+};
+
+function sourceEvent(event) {
+    let sourceEvent;
+    while (sourceEvent = event.sourceEvent) event = sourceEvent;
+    return event;
+}
+
+function d3Pointer(event, node) {
+    event = sourceEvent(event);
+    if (node === undefined) node = event.currentTarget;
+    if (node) {
+        var svg = node.ownerSVGElement || node;
+        if (svg.createSVGPoint) {
+            var point = svg.createSVGPoint();
+            point.x = event.clientX, point.y = event.clientY;
+            point = point.matrixTransform(node.getScreenCTM().inverse());
+            return [point.x, point.y];
+        }
+        if (node.getBoundingClientRect) {
+            var rect = node.getBoundingClientRect();
+            return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+        }
+    }
+    return [event.pageX, event.pageY];
+}
 
 const formatNumber = d3.format(',d');
 
@@ -62,9 +116,18 @@ slice.exit().remove();
 
 const newSlice = slice.enter()
     .append('g').attr('class', 'slice')
-    .on('click', d => {
-        d3.event.stopPropagation();
+    .on('click', function(ev, d) {
+        ev.stopPropagation();
         focusOn(d);
+    }).on('mouseover', function (ev, d) {
+        ev.stopPropagation();
+        //onHover(d.data);
+        tooltip.style('display', 'inline');
+        tooltip.html("<div class=\"tooltip-title\">".concat(tooltipTitle ? tooltipTitle(d.data, d) : getNodeStack(d).slice(state.excludeRoot ? 1 : 0).map(function (d) {
+            return nameOf(d.data);
+        }).join(' &rarr; '), "</div>").concat(tooltipContent(d.data, d)));
+    }).on("mouseout", function () {
+        tooltip.style('display', 'none');
     });
 
 newSlice.append('title')

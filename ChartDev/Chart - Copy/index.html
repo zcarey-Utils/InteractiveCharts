@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
-    <title>Chart Dev</title>
-    <script src="d3.v4.js"></script>
+    <title>Zoomable Sunburst</title>
+    <script src="d3.v6.js"></script>
     <script src="fileUtil.js"></script>
     <style type="text/css" media="screen">
         body {
@@ -37,6 +37,27 @@
             dominant-baseline: middle;
             text-anchor: middle;
         }
+
+        .sunburst-tooltip {
+             display: none;
+             position: absolute;
+             max-width: 320px;
+             white-space: nowrap;
+             padding: 5px;
+             border-radius: 3px;
+             font: 12px sans-serif;
+             color: #eee;
+             background: rgba(0,0,0,0.65);
+             pointer-events: none;
+            
+        }
+
+        .sunburst-tooltip .tooltip-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
     </style>
 </head>
 <body>
