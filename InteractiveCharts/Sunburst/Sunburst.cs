@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InteractiveCharts {
+namespace InteractiveCharts.Sunburst {
 	public class Sunburst : Chart {
 		protected override string URL => "Sunburst/index.html";
 
