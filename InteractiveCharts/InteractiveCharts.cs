@@ -33,7 +33,7 @@ namespace InteractiveCharts {
             settings.RegisterScheme(new CefCustomScheme {
                 SchemeName = "localfolder",
                 DomainName = "cefsharp",
-                SchemeHandlerFactory = new FolderSchemeHandlerFactory(
+                SchemeHandlerFactory = new CustomSchemeHandlerFactory( //new FolderSchemeHandlerFactory(
                     rootFolder: resourceFolder,
                     hostName: "cefsharp",
                     defaultPage: "index.html"

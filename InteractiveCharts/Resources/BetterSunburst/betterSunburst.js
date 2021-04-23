@@ -89,11 +89,6 @@ svg.on('click', function () {
     focusOn(root); // Reset zoom on canvas click
 });
 
-//Reset tooltip? when hovered on canvas
-svg.on('mouseover', function () {
-    //onHover(null);
-});
-
 //Tooltip title
 tooltipTitle = function (data, d) {
     //d.ancestors().map(d => d.data.name).reverse().join(' &rarr; ')
