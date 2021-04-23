@@ -30,10 +30,8 @@ namespace ChartTester {
 			ChartPanel.Controls.Add(chart);
 		}
 
-		private void BetterSunburst_Click(object sender, EventArgs e) => LoadChart<BetterSunburst>();
 		private void LimitedSunburst_Click(object sender, EventArgs e) => LoadChart<LimitedSunburst>();
 		private void Sunburst_Click(object sender, EventArgs e) => LoadChart<Sunburst>();
-		private void VasturianoSunburst_Click(object sender, EventArgs e) => LoadChart<VasturianoSunburst>();
 		private void ZoomableSunburst_Click(object sender, EventArgs e) => LoadChart<ZoomableSunburst>();
 	}
 }

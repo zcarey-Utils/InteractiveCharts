@@ -1,14 +1,12 @@
-<html>
+﻿<html>
 <head>
-    <title>Better Sunburst — Zoomable</title>
+    <title>Sunburst</title>
     <script src="d3.v6.js"></script>
     <script src="fileUtil.js"></script>
-    <style>
+    <style type="text/css" media="screen">
         body {
             background: #eee;
             margin: 0;
-            font-family: Sans-serif;
-            font-size: 11px;
         }
 
         svg {
@@ -18,29 +16,10 @@
             height: 100%;
             background: #fff;
         }
-
-        .sunburst-tooltip {
-            display: none;
-            position: absolute;
-            max-width: 320px;
-            white-space: nowrap;
-            padding: 5px;
-            border-radius: 3px;
-            font: 12px sans-serif;
-            color: #eee;
-            background: rgba(0,0,0,0.65);
-            pointer-events: none;
-        }
-
-        .sunburst-tooltip .tooltip-title {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 5px;
-        }
     </style>
 </head>
 <body>
     <div id="container"></div>
-    <script src="betterSunburst.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

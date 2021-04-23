@@ -26,9 +26,7 @@ namespace ChartTester {
 		private void InitializeComponent() {
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.SunburstMenu = new System.Windows.Forms.ToolStripMenuItem();
-			this.BetterSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.Sunburst = new System.Windows.Forms.ToolStripMenuItem();
-			this.VasturianoSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.ZoomableSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.LimitedSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.ChartPanel = new System.Windows.Forms.Panel();
@@ -48,47 +46,31 @@ namespace ChartTester {
 			// SunburstMenu
 			// 
 			this.SunburstMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BetterSunburst,
             this.Sunburst,
-            this.VasturianoSunburst,
             this.ZoomableSunburst,
             this.LimitedSunburst});
 			this.SunburstMenu.Name = "SunburstMenu";
 			this.SunburstMenu.Size = new System.Drawing.Size(66, 20);
 			this.SunburstMenu.Text = "Sunburst";
 			// 
-			// BetterSunburst
-			// 
-			this.BetterSunburst.Name = "BetterSunburst";
-			this.BetterSunburst.Size = new System.Drawing.Size(176, 22);
-			this.BetterSunburst.Text = "BetterSunburst";
-			this.BetterSunburst.Click += new System.EventHandler(this.BetterSunburst_Click);
-			// 
 			// Sunburst
 			// 
 			this.Sunburst.Name = "Sunburst";
-			this.Sunburst.Size = new System.Drawing.Size(176, 22);
+			this.Sunburst.Size = new System.Drawing.Size(175, 22);
 			this.Sunburst.Text = "Sunburst";
 			this.Sunburst.Click += new System.EventHandler(this.Sunburst_Click);
-			// 
-			// VasturianoSunburst
-			// 
-			this.VasturianoSunburst.Name = "VasturianoSunburst";
-			this.VasturianoSunburst.Size = new System.Drawing.Size(176, 22);
-			this.VasturianoSunburst.Text = "VasturianoSunburst";
-			this.VasturianoSunburst.Click += new System.EventHandler(this.VasturianoSunburst_Click);
 			// 
 			// ZoomableSunburst
 			// 
 			this.ZoomableSunburst.Name = "ZoomableSunburst";
-			this.ZoomableSunburst.Size = new System.Drawing.Size(176, 22);
+			this.ZoomableSunburst.Size = new System.Drawing.Size(175, 22);
 			this.ZoomableSunburst.Text = "ZoomableSunburst";
 			this.ZoomableSunburst.Click += new System.EventHandler(this.ZoomableSunburst_Click);
 			// 
 			// LimitedSunburst
 			// 
 			this.LimitedSunburst.Name = "LimitedSunburst";
-			this.LimitedSunburst.Size = new System.Drawing.Size(176, 22);
+			this.LimitedSunburst.Size = new System.Drawing.Size(175, 22);
 			this.LimitedSunburst.Text = "LimitedSunburst";
 			this.LimitedSunburst.Click += new System.EventHandler(this.LimitedSunburst_Click);
 			// 
@@ -120,9 +102,7 @@ namespace ChartTester {
 		#endregion
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem SunburstMenu;
-		private System.Windows.Forms.ToolStripMenuItem BetterSunburst;
 		private System.Windows.Forms.ToolStripMenuItem Sunburst;
-		private System.Windows.Forms.ToolStripMenuItem VasturianoSunburst;
 		private System.Windows.Forms.ToolStripMenuItem ZoomableSunburst;
 		private System.Windows.Forms.ToolStripMenuItem LimitedSunburst;
 		private System.Windows.Forms.Panel ChartPanel;

@@ -97,11 +97,11 @@ namespace InteractiveCharts {
             //Get the absolute path and remove the leading slash
             var asbolutePath = uri.AbsolutePath.Substring(1);
 
-            if(asbolutePath == "fileUtil.js") {
+            if(asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
                 var fileExtension = ".js";
                 var mimeType = GetMimeTypeDelegate(fileExtension);
                 var assembly = Assembly.GetExecutingAssembly();
-                var stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources.fileUtil.js");
+                var stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
                 return ResourceHandler.FromStream(stream, mimeType);
 			}
 

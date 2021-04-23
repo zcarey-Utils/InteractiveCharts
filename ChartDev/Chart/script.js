@@ -5,8 +5,8 @@ data = readJSON("flare.json")
 partition = data => d3.partition()
     .size([2 * Math.PI, radius])
     (d3.hierarchy(data)
-        .sum(d => d.value)
-        .sort((a, b) => b.value - a.value))
+        .sum(d => d.size)
+        .sort((a, b) => b.size - a.size))
 
 color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 format = d3.format(",d")
@@ -54,7 +54,7 @@ svg.append("g")
     .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
     .attr("d", arc)
     .append("title")
-    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.size)}`);
 
 svg.append("g")
     .attr("pointer-events", "none")

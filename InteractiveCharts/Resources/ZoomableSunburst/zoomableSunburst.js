@@ -4,7 +4,7 @@ radius = width / 2;
 data = readJSON("flare.json")
 
 const temp = d3.hierarchy(data)
-    .sum(d => d.size)
+    .sum(d => d.value)
     .sort((a, b) => b.value - a.value);
 const partition = d3.partition().size([2 * Math.PI, radius])
 const root = partition(temp);
@@ -87,11 +87,6 @@ container.on('mousemove', function (ev) {
 //Reset focus by clicking on the canvas
 svg.on('click', function () {
     focusOn(root); // Reset zoom on canvas click
-});
-
-//Reset tooltip? when hovered on canvas
-svg.on('mouseover', function () {
-    //onHover(null);
 });
 
 //Tooltip title

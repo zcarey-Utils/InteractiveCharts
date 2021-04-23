@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <title>Zoomable Sunburst</title>
-    <script src="../d3.v4.js"></script>
-    <script src="../fileUtil.js"></script>
-    <style type="text/css" media="screen">
+    <script src="localfolder://cefsharp/d3.v6.js"></script>
+    <script src="localfolder://cefsharp/fileUtil.js"></script>
+    <style>
         body {
             background: #eee;
             margin: 0;
@@ -19,28 +19,28 @@
             background: #fff;
         }
 
-        .slice {
-            cursor: pointer;
+        .sunburst-tooltip {
+            display: none;
+            position: absolute;
+            max-width: 320px;
+            white-space: nowrap;
+            padding: 5px;
+            border-radius: 3px;
+            font: 12px sans-serif;
+            color: #eee;
+            background: rgba(0,0,0,0.65);
+            pointer-events: none;
         }
 
-            .slice .main-arc {
-                stroke: #fff;
-                stroke-width: 1px;
-            }
-
-            .slice .hidden-arc {
-                fill: none;
-            }
-
-            .slice text {
-                pointer-events: none;
-                dominant-baseline: middle;
-                text-anchor: middle;
-            }
+        .sunburst-tooltip .tooltip-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
     <div id="container"></div>
-    <script src="script.js"></script>
+    <script src="zoomableSunburst.js"></script>
 </body>
 </html>
