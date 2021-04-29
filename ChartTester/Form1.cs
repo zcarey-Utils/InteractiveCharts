@@ -1,4 +1,6 @@
 ﻿using InteractiveCharts;
+using InteractiveCharts.Data.Examples;
+using InteractiveCharts.Sunburst;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +34,20 @@ namespace ChartTester {
 
 		private void LimitedSunburst_Click(object sender, EventArgs e) => LoadChart<LimitedSunburst>();
 		private void Sunburst_Click(object sender, EventArgs e) => LoadChart<Sunburst>();
-		private void ZoomableSunburst_Click(object sender, EventArgs e) => LoadChart<ZoomableSunburst>();
+		private void ZoomableSunburst_Click(object sender, EventArgs e) {
+			//LoadChart<ZoomableSunburst>();
+			//((ZoomableSunburst)this.ChartPanel.Controls["Chart1"]).Data = GroupedDataExample.Flare;
+			if (chart != null) {
+				ChartPanel.Controls.Remove(chart);
+				chart = null;
+			}
+
+			ZoomableSunburst chart1 = new ZoomableSunburst();
+			chart = chart1;
+			chart1.Data = GroupedDataExample.Flare;
+			chart.Dock = DockStyle.Fill;
+			chart.Name = "Chart1";
+			ChartPanel.Controls.Add(chart);
+		}
 	}
 }

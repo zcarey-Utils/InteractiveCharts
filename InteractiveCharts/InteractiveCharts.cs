@@ -9,6 +9,30 @@ using System.Text;
 namespace InteractiveCharts {
 	public static class InteractiveCharts {
 
+        internal static Dictionary<int, ResourceLoader> ResourceLoaders = new Dictionary<int, ResourceLoader>();
+        private static int ID = 0;
+
+        internal static int RegisterResourceLoader(ResourceLoader loader) {
+            lock (ResourceLoaders) {
+                int i = ID;
+                do {
+                    if (!ResourceLoaders.ContainsKey(i)) {
+                        ResourceLoaders[i] = loader;
+                        ID = i + 1;
+                        return i;
+                    }
+                    i++;
+                } while (i != ID);
+                throw new IndexOutOfRangeException("Could not find an available ID.");
+            }
+        }
+
+        internal static void UnregisterResourceLoader(int id) {
+			lock (ResourceLoaders) {
+                ResourceLoaders.Remove(id);
+			}
+		}
+
         private static bool initialized = false;
 
 		public static void Initialize() {

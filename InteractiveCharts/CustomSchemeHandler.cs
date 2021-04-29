@@ -1,4 +1,5 @@
 ﻿using CefSharp;
+using CefSharp.WinForms;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -94,16 +95,39 @@ namespace InteractiveCharts {
                 return ResourceHandler.ForErrorMessage(string.Format("HostName {0} does not match the expected HostName of {1}.", uri.Host, this.hostName), HttpStatusCode.NotFound);
             }
 
+/*            if ((browser != null) && (browser is ChromiumWebBrowser chrome)) {
+				if ((chrome.Parent != null) && (chrome.Parent is Chart chart)) {
+                    chart.ResourceLoader.Test();
+				}
+			}
+*/
             //Get the absolute path and remove the leading slash
-            var asbolutePath = uri.AbsolutePath.Substring(1);
+            var asbolutePath = uri.AbsolutePath.Substring(1); //"d3.v6.js"
+            ResourceLoader loader = null;
 
-            if(asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
+            int separator = asbolutePath.IndexOf("/");
+            int id;
+            if((separator > -1) && int.TryParse(asbolutePath.Substring(0, separator), out id)){
+                InteractiveCharts.ResourceLoaders.TryGetValue(id, out loader);
+                asbolutePath = asbolutePath.Substring(separator + 1);
+			}
+
+            if (asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
                 var fileExtension = ".js";
                 var mimeType = GetMimeTypeDelegate(fileExtension);
-                var assembly = Assembly.GetExecutingAssembly();
-                var stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
+                Stream stream = null;
+
+                if (loader != null) {
+                    stream = loader.LoadResource(asbolutePath);
+                }
+                
+                if(stream == null) {
+                    var assembly = Assembly.GetExecutingAssembly();
+                    stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
+                }
+
                 return ResourceHandler.FromStream(stream, mimeType);
-			}
+            }
 
             if (string.IsNullOrEmpty(asbolutePath)) {
                 asbolutePath = defaultPage;

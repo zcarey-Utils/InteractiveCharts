@@ -1,7 +1,17 @@
-﻿function readTextFile(file) {
+﻿function readTextFile(file, useID = false) {
+    var ID = "";
+
+    if (useID) {
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        if (id != null) {
+            ID = id + "/";
+        }
+    }
+
     var allText = null;
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "localfolder://cefsharp/" + file, false);
+    rawFile.open("GET", "localfolder://cefsharp/" + ID + file, false);
     rawFile.onreadystatechange = function () {
         if (rawFile.readyState === 4) {
             if (rawFile.status === 200 || rawFile.status == 0) {
@@ -13,10 +23,10 @@
     return allText;
 }
 
-function readCSV(file) {
-    return d3.csvParse(readTextFile(file));
+function readCSV(file, useID = false) {
+    return d3.csvParse(readTextFile(file, useID));
 }
 
-function readJSON(file) {
-    return JSON.parse(readTextFile(file));
+function readJSON(file, useID = false) {
+    return JSON.parse(readTextFile(file, useID));
 }

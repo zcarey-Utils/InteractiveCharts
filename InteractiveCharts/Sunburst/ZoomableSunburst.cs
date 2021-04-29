@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InteractiveCharts.Data.GroupedData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -8,7 +9,10 @@ namespace InteractiveCharts.Sunburst {
 
 	public class ZoomableSunburst : Chart {
 
-		public List<SunburstData> Data { get; set; }
+		public IGroupedData Data { 
+			get => resourceLoader.Data;
+			set => resourceLoader.Data = value; 
+		}
 
 		/// <summary>
 		/// NOTE: This is Javascript code, thus the code is not checked for errors until runtime.
@@ -19,5 +23,9 @@ namespace InteractiveCharts.Sunburst {
 		protected override string URL => "ZoomableSunburst/index.html";
 
 		protected override string DesignModeName => "Zoomable Sunburst";
+
+		internal override ResourceLoader ResourceLoader => resourceLoader;
+
+		private SunburstResourceLoader resourceLoader = new SunburstResourceLoader();
 	}
 }

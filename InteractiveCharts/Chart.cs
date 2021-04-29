@@ -47,15 +47,23 @@ namespace InteractiveCharts {
 		protected abstract string URL { get; }
 		protected abstract string DesignModeName { get; }
 
+		protected readonly int ResourceLoaderID;
+		internal virtual ResourceLoader ResourceLoader { get => null; }
+
 		private ChromiumWebBrowser browser;
 
 		internal Chart() {
+			ResourceLoaderID = InteractiveCharts.RegisterResourceLoader(ResourceLoader);
 			InitializeComponent();
+		}
+
+		~Chart() {
+			InteractiveCharts.UnregisterResourceLoader(ResourceLoaderID);
 		}
 
 		protected override void OnLoad(EventArgs e) {
 			if (!this.DesignMode) {
-				browser = new ChromiumWebBrowser(Path.GetFullPath("Resources/" + URL));
+				browser = new ChromiumWebBrowser(Path.GetFullPath("Resources/" + URL + "?id=" + ResourceLoaderID));
 				this.SuspendLayout();
 				this.Controls.Add(browser);
 
@@ -87,7 +95,7 @@ namespace InteractiveCharts {
 		private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs e) {
 			if (e.Level >= LogSeverity.Error) {
 				this.Parent.InvokeOnUiThreadIfRequired(() => {
-					MessageBox.Show(e.Message + ": " + e.Source + " at Line " + e.Line, DesignModeName);
+					MessageBox.Show(this.FindForm(), e.Message + ": " + e.Source + " at Line " + e.Line, DesignModeName);
 				});
 			}
 		}

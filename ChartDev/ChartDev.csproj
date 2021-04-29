@@ -104,4 +104,9 @@
   </Target>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
+  
+  <ItemGroup>
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="90.5.7" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="90.5.7" />
+  </ItemGroup>
 </Project>
