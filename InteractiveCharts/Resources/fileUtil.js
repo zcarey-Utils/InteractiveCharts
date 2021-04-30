@@ -1,9 +1,13 @@
-﻿function readTextFile(file, useID = false) {
+﻿function getID() {
+    var url = new URL(window.location.href);
+    return url.searchParams.get("id");
+}
+
+function readTextFile(file, useID = false) {
     var ID = "";
 
     if (useID) {
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
+        var id = getID();
         if (id != null) {
             ID = id + "/";
         }

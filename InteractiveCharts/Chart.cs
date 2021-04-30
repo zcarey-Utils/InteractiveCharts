@@ -1,4 +1,5 @@
 ﻿using CefSharp;
+using CefSharp.Web;
 using CefSharp.WinForms;
 using System;
 using System.Collections.Generic;
@@ -110,6 +111,10 @@ namespace InteractiveCharts {
 				e.Graphics.DrawString(DesignModeName, this.Font, new SolidBrush(this.ForeColor), location);
 			}
 			base.OnPaint(e);
+		}
+
+		public void Reload() {
+			browser.Reload(true);
 		}
 
 	}
