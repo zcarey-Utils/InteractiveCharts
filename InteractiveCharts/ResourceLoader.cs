@@ -6,6 +6,8 @@ using System.Text;
 namespace InteractiveCharts {
 	internal interface ResourceLoader {
 
+		internal Stream LoadConfig();
+
 		internal Stream LoadResource(string name);
 
 	}

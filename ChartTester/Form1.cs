@@ -45,6 +45,7 @@ namespace ChartTester {
 			ZoomableSunburst chart1 = new ZoomableSunburst();
 			chart = chart1;
 			chart1.Data = GroupedDataExample.Flare;
+			chart1.TooltipContent = "return \"Area: \" + format(d.value);";
 			chart.Dock = DockStyle.Fill;
 			chart.Name = "Chart1";
 			ChartPanel.Controls.Add(chart);

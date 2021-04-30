@@ -112,7 +112,22 @@ namespace InteractiveCharts {
                 asbolutePath = asbolutePath.Substring(separator + 1);
 			}
 
-            if (asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
+            if(asbolutePath == "config.js") {
+                var fileExtension = ".js";
+                var mimeType = GetMimeTypeDelegate(fileExtension);
+                Stream stream = null;
+
+                if (loader != null) {
+                    stream = loader.LoadConfig();
+                }
+
+                if (stream == null) {
+                    var assembly = Assembly.GetExecutingAssembly();
+                    stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
+                }
+
+                return ResourceHandler.FromStream(stream, mimeType);
+            } else if (asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
                 var fileExtension = ".js";
                 var mimeType = GetMimeTypeDelegate(fileExtension);
                 Stream stream = null;

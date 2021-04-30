@@ -1,16 +1,13 @@
-﻿function getID() {
+﻿/*function getID() {
     var url = new URL(window.location.href);
     return url.searchParams.get("id");
-}
+}*/
 
 function readTextFile(file, useID = false) {
     var ID = "";
 
     if (useID) {
-        var id = getID();
-        if (id != null) {
-            ID = id + "/";
-        }
+        ID = id + "/";
     }
 
     var allText = null;

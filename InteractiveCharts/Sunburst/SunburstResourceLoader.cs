@@ -10,6 +10,27 @@ namespace InteractiveCharts.Sunburst {
 
 		internal IGroupedData Data { get; set; }
 
+		internal int ID = 0;
+		internal string TooltipContent = null;
+
+		Stream ResourceLoader.LoadConfig() {
+			MemoryStream stream = new MemoryStream();
+			StreamWriter writer = new StreamWriter(stream);
+			{
+				writer.WriteLine("var id = \"" + ID.ToString() + "\";");
+
+				if(TooltipContent != null) {
+					writer.WriteLine("var tooltipContent = function (data, d) {");
+					writer.WriteLine(TooltipContent);
+					writer.WriteLine("};");
+				}
+			}
+			writer.Flush();
+			stream.Flush();
+			stream.Position = 0;
+			return stream;
+		}
+
 		Stream ResourceLoader.LoadResource(string name) {
 			if (name == "flare.json") { //TODO change to Data.json
 				MemoryStream stream = new MemoryStream();

@@ -1,8 +1,6 @@
 <html>
 <head>
     <title>Zoomable Sunburst</title>
-    <script src="localfolder://cefsharp/d3.v6.js"></script>
-    <script src="localfolder://cefsharp/fileUtil.js"></script>
     <style>
         body {
             background: #eee;
@@ -32,15 +30,18 @@
             pointer-events: none;
         }
 
-        .sunburst-tooltip .tooltip-title {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 5px;
-        }
+            .sunburst-tooltip .tooltip-title {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 5px;
+            }
     </style>
 </head>
 <body>
     <div id="container"></div>
-    <script src="zoomableSunburst.js"></script>
+    <script src="localfolder://cefsharp/${id}/config.js"></script>
+    <script src="localfolder://cefsharp/d3.v6.js"></script>
+    <script src="localfolder://cefsharp/fileUtil.js"></script>
+    <script src="localfolder://cefsharp/ZoomableSunburst/zoomableSunburst.js"></script>
 </body>
 </html>

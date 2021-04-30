@@ -64,7 +64,8 @@ namespace InteractiveCharts {
 
 		protected override void OnLoad(EventArgs e) {
 			if (!this.DesignMode) {
-				browser = new ChromiumWebBrowser(Path.GetFullPath("Resources/" + URL + "?id=" + ResourceLoaderID));
+				//browser = new ChromiumWebBrowser(Path.GetFullPath("Resources/" + URL + "?id=" + ResourceLoaderID));
+				browser = new ChromiumWebBrowser(LoadHTML("Resources/" + URL));
 				this.SuspendLayout();
 				this.Controls.Add(browser);
 
@@ -117,5 +118,14 @@ namespace InteractiveCharts {
 			browser.Reload(true);
 		}
 
+		private HtmlString LoadHTML(string filePath) {
+			try {
+				string file = File.ReadAllText(filePath);
+				file = file.Replace("${id}", ResourceLoaderID.ToString());
+				return new HtmlString(file);
+			} catch (Exception) {
+				return new HtmlString("<html><head></head><body></body></html>");
+			}
+		}
 	}
 }

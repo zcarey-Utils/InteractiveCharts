@@ -99,9 +99,11 @@ tooltipTitle = function (data, d) {
 };
 
 //Temporary tooltip content
-tooltipContent = function (data, d) {
-    return "Size: " + format(d.value);
-};
+if ((typeof tooltipContent !== "function") || (tooltipContent.length !== 2)) {
+    tooltipContent = function (data, d) {
+        return "Size: " + format(d.value);
+    };
+}
 
 const g = svg.append("g");
 
