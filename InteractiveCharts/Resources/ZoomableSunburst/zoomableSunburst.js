@@ -1,7 +1,7 @@
 ﻿width = 1000;
 radius = width / 2;
 
-data = readJSON("flare.json", true)
+data = readJSON("data.json", true)
 
 const temp = d3.hierarchy(data)
     .sum(d => d.value)

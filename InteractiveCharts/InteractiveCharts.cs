@@ -53,14 +53,11 @@ namespace InteractiveCharts {
             };
 
             //Set the resource folder flor loading local resources
-            string resourceFolder = Path.GetFullPath("Resources");
             settings.RegisterScheme(new CefCustomScheme {
                 SchemeName = "localfolder",
                 DomainName = "cefsharp",
                 SchemeHandlerFactory = new CustomSchemeHandlerFactory( //new FolderSchemeHandlerFactory(
-                    rootFolder: resourceFolder,
-                    hostName: "cefsharp",
-                    defaultPage: "index.html"
+                    hostName: "cefsharp"
                 )
             });
 

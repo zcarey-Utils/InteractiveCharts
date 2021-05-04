@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zack\\source\\repos\\zcarey-Utils\\InteractiveCharts\\ChartDev\\ChartDev.csproj": {}
+    "C:\\Users\\zachc\\source\\repos\\InteractiveCharts\\ChartDev\\ChartDev.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zack\\source\\repos\\zcarey-Utils\\InteractiveCharts\\ChartDev\\ChartDev.csproj": {
+    "C:\\Users\\zachc\\source\\repos\\InteractiveCharts\\ChartDev\\ChartDev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zack\\source\\repos\\zcarey-Utils\\InteractiveCharts\\ChartDev\\ChartDev.csproj",
+        "projectUniqueName": "C:\\Users\\zachc\\source\\repos\\InteractiveCharts\\ChartDev\\ChartDev.csproj",
         "projectName": "ChartDev",
-        "projectPath": "C:\\Users\\Zack\\source\\repos\\zcarey-Utils\\InteractiveCharts\\ChartDev\\ChartDev.csproj",
-        "packagesPath": "C:\\Users\\Zack\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zack\\source\\repos\\zcarey-Utils\\InteractiveCharts\\ChartDev\\obj.netcore\\",
+        "projectPath": "C:\\Users\\zachc\\source\\repos\\InteractiveCharts\\ChartDev\\ChartDev.csproj",
+        "packagesPath": "C:\\Users\\zachc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zachc\\source\\repos\\InteractiveCharts\\ChartDev\\obj.netcore\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Zack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zachc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -24,6 +28,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\zachc\\source\\repos\\zcarey-Utils\\JsonSerializable\\JsonSerializable\\bin\\Release": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,6 +74,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.14, 3.1.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -114,6 +125,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

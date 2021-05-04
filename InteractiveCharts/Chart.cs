@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -65,7 +66,7 @@ namespace InteractiveCharts {
 		protected override void OnLoad(EventArgs e) {
 			if (!this.DesignMode) {
 				//browser = new ChromiumWebBrowser(Path.GetFullPath("Resources/" + URL + "?id=" + ResourceLoaderID));
-				browser = new ChromiumWebBrowser(LoadHTML("Resources/" + URL));
+				browser = new ChromiumWebBrowser(LoadHTML(URL));
 				this.SuspendLayout();
 				this.Controls.Add(browser);
 
@@ -120,7 +121,9 @@ namespace InteractiveCharts {
 
 		private HtmlString LoadHTML(string filePath) {
 			try {
-				string file = File.ReadAllText(filePath);
+				var assembly = Assembly.GetExecutingAssembly();
+				Stream stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + filePath.Replace('/', '.'));
+				string file = new StreamReader(stream).ReadToEnd();
 				file = file.Replace("${id}", ResourceLoaderID.ToString());
 				return new HtmlString(file);
 			} catch (Exception) {

@@ -16,11 +16,8 @@ namespace InteractiveCharts {
     /// registering the scheme handler
     /// </summary>
     public class CustomSchemeHandlerFactory : ISchemeHandlerFactory {
-        private readonly string rootFolder;
-        private readonly string defaultPage;
         private readonly string schemeName;
         private readonly string hostName;
-        private readonly FileShare resourceFileShare;
 
         /// <summary>
         /// <see cref="ResourceHandler.GetMimeType(string)"/> is being deprecated in favour of using
@@ -38,16 +35,9 @@ namespace InteractiveCharts {
         /// <param name="hostName">if not null then hostName checking will be implemented</param>
         /// <param name="defaultPage">default page if no page specified, defaults to index.html</param>
         /// <param name="resourceFileShare">file share mode used to open resources, defaults to FileShare.Read</param>
-        public CustomSchemeHandlerFactory(string rootFolder, string schemeName = null, string hostName = null, string defaultPage = "index.html", FileShare resourceFileShare = FileShare.Read) {
-            this.rootFolder = Path.GetFullPath(rootFolder);
-            this.defaultPage = defaultPage;
+        public CustomSchemeHandlerFactory(string schemeName = null, string hostName = null) {
             this.schemeName = schemeName;
             this.hostName = hostName;
-            this.resourceFileShare = resourceFileShare;
-
-            if (!Directory.Exists(this.rootFolder)) {
-                throw new DirectoryNotFoundException(this.rootFolder);
-            }
         }
 
         /// <summary>
@@ -95,70 +85,47 @@ namespace InteractiveCharts {
                 return ResourceHandler.ForErrorMessage(string.Format("HostName {0} does not match the expected HostName of {1}.", uri.Host, this.hostName), HttpStatusCode.NotFound);
             }
 
-/*            if ((browser != null) && (browser is ChromiumWebBrowser chrome)) {
-				if ((chrome.Parent != null) && (chrome.Parent is Chart chart)) {
-                    chart.ResourceLoader.Test();
-				}
-			}
-*/
             //Get the absolute path and remove the leading slash
-            var asbolutePath = uri.AbsolutePath.Substring(1); //"d3.v6.js"
+            var asbolutePath = uri.AbsolutePath.Substring(1); 
             ResourceLoader loader = null;
 
+            //Search for ResourceLoader ID #
             int separator = asbolutePath.IndexOf("/");
             int id;
             if((separator > -1) && int.TryParse(asbolutePath.Substring(0, separator), out id)){
                 InteractiveCharts.ResourceLoaders.TryGetValue(id, out loader);
-                asbolutePath = asbolutePath.Substring(separator + 1);
+                asbolutePath = asbolutePath.Substring(separator + 1); //Adjust uri to only contain the file name now
 			}
 
-            if(asbolutePath == "config.js") {
-                var fileExtension = ".js";
-                var mimeType = GetMimeTypeDelegate(fileExtension);
-                Stream stream = null;
+            // Get file properties
+            string fileExtension = Path.GetExtension(asbolutePath);
+            var mimeType = GetMimeTypeDelegate(fileExtension);
+            Stream stream = null;
 
-                if (loader != null) {
+            // Check for resources that are loaded by the ResourceLoader
+            if(loader != null) {
+                if(asbolutePath == "config.js") {
                     stream = loader.LoadConfig();
-                }
+				}else if(asbolutePath == "data.json") {
+                    stream = loader.LoadData();
+				}
+			}
 
-                if (stream == null) {
+            // If no stream has been loaded yet, attempt to load from an internal assembly resource.
+            if (stream == null) {
+                try {
                     var assembly = Assembly.GetExecutingAssembly();
-                    stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
-                }
-
-                return ResourceHandler.FromStream(stream, mimeType);
-            } else if (asbolutePath == "fileUtil.js" || asbolutePath.StartsWith("d3.v") || asbolutePath == "flare.json") {
-                var fileExtension = ".js";
-                var mimeType = GetMimeTypeDelegate(fileExtension);
-                Stream stream = null;
-
-                if (loader != null) {
-                    stream = loader.LoadResource(asbolutePath);
-                }
-                
-                if(stream == null) {
-                    var assembly = Assembly.GetExecutingAssembly();
-                    stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath);
-                }
-
-                return ResourceHandler.FromStream(stream, mimeType);
+                    stream = assembly.GetManifestResourceStream("InteractiveCharts.Resources." + asbolutePath.Replace('/', '.'));
+				} catch (Exception) {
+                    stream = null;
+				}
             }
 
-            if (string.IsNullOrEmpty(asbolutePath)) {
-                asbolutePath = defaultPage;
-            }
-
-            var filePath = WebUtility.UrlDecode(Path.GetFullPath(Path.Combine(rootFolder, asbolutePath)));
-
-            //Check the file requested is within the specified path and that the file exists
-            if (filePath.StartsWith(rootFolder, StringComparison.OrdinalIgnoreCase) && File.Exists(filePath)) {
-                var fileExtension = Path.GetExtension(filePath);
-                var mimeType = GetMimeTypeDelegate(fileExtension);
-                var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, resourceFileShare);
+            if (stream != null) {
                 return ResourceHandler.FromStream(stream, mimeType);
+            } else {
+                return ResourceHandler.ForErrorMessage("Resource Not Found - " + uri.AbsolutePath, HttpStatusCode.NotFound);
             }
-
-            return ResourceHandler.ForErrorMessage("File Not Found - " + filePath, HttpStatusCode.NotFound);
         }
     }
 }

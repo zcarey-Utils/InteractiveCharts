@@ -8,41 +8,18 @@ using System.Text;
 namespace InteractiveCharts.Sunburst {
 	internal class SunburstResourceLoader : ResourceLoader {
 
-		internal IGroupedData Data { get; set; }
+		internal new IGroupedData Data { 
+			get => (IGroupedData)base.Data; 
+			set => base.Data = value; 
+		}
 
-		internal int ID = 0;
 		internal string TooltipContent = null;
 
-		Stream ResourceLoader.LoadConfig() {
-			MemoryStream stream = new MemoryStream();
-			StreamWriter writer = new StreamWriter(stream);
-			{
-				writer.WriteLine("var id = \"" + ID.ToString() + "\";");
-
-				if(TooltipContent != null) {
-					writer.WriteLine("var tooltipContent = function (data, d) {");
-					writer.WriteLine(TooltipContent);
-					writer.WriteLine("};");
-				}
-			}
-			writer.Flush();
-			stream.Flush();
-			stream.Position = 0;
-			return stream;
-		}
-
-		Stream ResourceLoader.LoadResource(string name) {
-			if (name == "flare.json") { //TODO change to Data.json
-				MemoryStream stream = new MemoryStream();
-				if (Data != null) {
-					Json.Write(Data, stream);
-					stream.Position = 0;
-				}
-
-				return stream;
-			} else {
-				return null;
+		protected override void LoadConfig(JavascriptWriter writer) {
+			if (TooltipContent != null) {
+				writer.WriteFunction("tooltipContent", TooltipContent, "data", "d");
 			}
 		}
+
 	}
 }

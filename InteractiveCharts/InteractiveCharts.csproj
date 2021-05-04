@@ -12,7 +12,12 @@
     <None Remove="Resources\d3.v5.js" />
     <None Remove="Resources\d3.v6.js" />
     <None Remove="Resources\fileUtil.js" />
-    <None Remove="Resources\flare2.json" />
+    <None Remove="Resources\LimitedSunburst\index.html" />
+    <None Remove="Resources\LimitedSunburst\limitedSunburst.js" />
+    <None Remove="Resources\Sunburst\index.html" />
+    <None Remove="Resources\Sunburst\script.js" />
+    <None Remove="Resources\ZoomableSunburst\index.html" />
+    <None Remove="Resources\ZoomableSunburst\zoomableSunburst.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +33,22 @@
     <EmbeddedResource Include="Resources\fileUtil.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\flare2.json">
+    <EmbeddedResource Include="Resources\LimitedSunburst\index.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LimitedSunburst\limitedSunburst.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sunburst\index.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sunburst\script.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ZoomableSunburst\index.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ZoomableSunburst\zoomableSunburst.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -39,23 +59,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\ZoomableSunburst\index.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\ZoomableSunburst\zoomableSunburst.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\LimitedSunburst\index.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\LimitedSunburst\limitedSunburst.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Sunburst\index.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Sunburst\script.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="Resources\flare2.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

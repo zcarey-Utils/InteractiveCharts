@@ -1,6 +1,6 @@
 ﻿const size = 1000;
 radius = size / 2
-data = readJSON("flare.json")
+data = readJSON("data.json")
 
 partition = data => d3.partition()
     .size([2 * Math.PI, radius])

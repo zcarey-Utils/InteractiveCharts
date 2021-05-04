@@ -30,9 +30,7 @@ namespace ChartTester {
 			this.ZoomableSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.LimitedSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.ChartPanel = new System.Windows.Forms.Panel();
-			this.zoomableSunburst1 = new InteractiveCharts.Sunburst.ZoomableSunburst();
 			this.menuStrip1.SuspendLayout();
-			this.ChartPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -78,22 +76,11 @@ namespace ChartTester {
 			// 
 			// ChartPanel
 			// 
-			this.ChartPanel.Controls.Add(this.zoomableSunburst1);
 			this.ChartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ChartPanel.Location = new System.Drawing.Point(0, 24);
 			this.ChartPanel.Name = "ChartPanel";
 			this.ChartPanel.Size = new System.Drawing.Size(1090, 715);
 			this.ChartPanel.TabIndex = 2;
-			// 
-			// zoomableSunburst1
-			// 
-			this.zoomableSunburst1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.zoomableSunburst1.Data = null;
-			this.zoomableSunburst1.Location = new System.Drawing.Point(411, 198);
-			this.zoomableSunburst1.Name = "zoomableSunburst1";
-			this.zoomableSunburst1.Size = new System.Drawing.Size(148, 148);
-			this.zoomableSunburst1.TabIndex = 0;
-			this.zoomableSunburst1.TooltipContent = "return \"Size: \" + format(d.value);";
 			// 
 			// Form1
 			// 
@@ -107,7 +94,6 @@ namespace ChartTester {
 			this.Text = "Form1";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			this.ChartPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -120,7 +106,6 @@ namespace ChartTester {
 		private System.Windows.Forms.ToolStripMenuItem ZoomableSunburst;
 		private System.Windows.Forms.ToolStripMenuItem LimitedSunburst;
 		private System.Windows.Forms.Panel ChartPanel;
-		private InteractiveCharts.Sunburst.ZoomableSunburst zoomableSunburst1;
 	}
 }
 
