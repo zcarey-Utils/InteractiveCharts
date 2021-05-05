@@ -3,7 +3,7 @@
     return url.searchParams.get("id");
 }*/
 
-function readTextFile(file, useID = false) {
+function readTextFile(file, useID = true) {
     var ID = "";
 
     if (useID) {
@@ -24,10 +24,10 @@ function readTextFile(file, useID = false) {
     return allText;
 }
 
-function readCSV(file, useID = false) {
+function readCSV(file, useID = true) {
     return d3.csvParse(readTextFile(file, useID));
 }
 
-function readJSON(file, useID = false) {
+function readJSON(file, useID = true) {
     return JSON.parse(readTextFile(file, useID));
 }

@@ -24,13 +24,21 @@ namespace InteractiveCharts {
 
 		protected abstract void LoadConfig(JavascriptWriter writer);
 
+		//TODO Uncaught TypeError: Cannot read property 'length' of undefined:
+		//localfolder://cefsharp/ZoomableSunburst/zoomableSunburst.js at Line 13
+		// (when data is null)
 		internal Stream LoadData() {
 			MemoryStream stream = new MemoryStream();
 			if (Data != null) {
-				Json.Write(Data, stream);
-				stream.Flush();
-				stream.Position = 0;
+				Json.Write(Data, stream);	
+			} else {
+				JsonObject empty = new JsonObject();
+				empty["name"] = (JsonString)"null";
+				empty["value"] = (JsonInteger)1L;
+				Json.Write(empty, stream);
 			}
+			stream.Flush();
+			stream.Position = 0;
 
 			return stream;
 		}

@@ -41,10 +41,10 @@ const root = partition(data);
     // Class to make it responsive.
     .classed("svg-content-responsive", true)*/
 
-
-const svg = d3.select("div#container")
+const container = d3.select("div#container");
+const svg = container
     .append("svg")
-    .attr("viewBox", [-size/2, -size/2, size, size]);
+    .attr("viewBox", [-size / 2, -size / 2, size, size]);
 
 svg.append("g")
     .attr("fill-opacity", 0.6)

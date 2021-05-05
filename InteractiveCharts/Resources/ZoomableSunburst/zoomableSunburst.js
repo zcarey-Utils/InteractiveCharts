@@ -1,7 +1,7 @@
 ﻿width = 1000;
 radius = width / 2;
 
-data = readJSON("data.json", true)
+data = readJSON("data.json")
 
 const temp = d3.hierarchy(data)
     .sum(d => d.value)
@@ -90,13 +90,14 @@ svg.on('click', function () {
 });
 
 //Tooltip title
-tooltipTitle = function (data, d) {
-    //d.ancestors().map(d => d.data.name).reverse().join(' &rarr; ')
-    var excludeRoot = false;
-    return getNodeStack(d).slice(excludeRoot ? 1 : 0).map(function (d) {
-        return d.data.name;
-    }).join(' &rarr; ');
-};
+if ((typeof tooltipTitle !== "function") || (tooltipTitle.length !== 2)) {
+    tooltipTitle = function (data, d) {
+        var excludeRoot = false;
+        return getNodeStack(d).slice(excludeRoot ? 1 : 0).map(function (d) {
+            return d.data.name;
+        }).join(' &rarr; ');
+    };
+}
 
 //Temporary tooltip content
 if ((typeof tooltipContent !== "function") || (tooltipContent.length !== 2)) {

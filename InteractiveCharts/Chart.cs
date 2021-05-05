@@ -50,7 +50,7 @@ namespace InteractiveCharts {
 		protected abstract string DesignModeName { get; }
 
 		protected readonly int ResourceLoaderID;
-		internal virtual ResourceLoader ResourceLoader { get => null; }
+		internal abstract ResourceLoader ResourceLoader { get; }
 
 		private ChromiumWebBrowser browser;
 

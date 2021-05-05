@@ -13,9 +13,14 @@ namespace InteractiveCharts.Sunburst {
 			set => base.Data = value; 
 		}
 
+		internal string TooltipTitle = null;
 		internal string TooltipContent = null;
 
 		protected override void LoadConfig(JavascriptWriter writer) {
+			if(TooltipTitle != null) {
+				writer.WriteFunction("tooltipTitle", TooltipTitle, "data", "d");
+			}
+
 			if (TooltipContent != null) {
 				writer.WriteFunction("tooltipContent", TooltipContent, "data", "d");
 			}
