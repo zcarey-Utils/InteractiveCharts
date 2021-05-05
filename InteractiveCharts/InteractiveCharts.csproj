@@ -12,6 +12,8 @@
     <None Remove="Resources\d3.v5.js" />
     <None Remove="Resources\d3.v6.js" />
     <None Remove="Resources\fileUtil.js" />
+    <None Remove="Resources\Icicle\index.html" />
+    <None Remove="Resources\Icicle\script.js" />
     <None Remove="Resources\LimitedSunburst\index.html" />
     <None Remove="Resources\LimitedSunburst\limitedSunburst.js" />
     <None Remove="Resources\Sunburst\index.html" />
@@ -31,6 +33,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\fileUtil.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icicle\index.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icicle\script.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\LimitedSunburst\index.html">

@@ -57,11 +57,11 @@
             },
             "chromiumembeddedframework.runtime.win-x64": {
               "target": "Package",
-              "version": "[90.5.7, )"
+              "version": "[89.0.17, )"
             },
             "chromiumembeddedframework.runtime.win-x86": {
               "target": "Package",
-              "version": "[90.5.7, )"
+              "version": "[89.0.17, )"
             }
           },
           "imports": [
@@ -99,11 +99,11 @@
             },
             "chromiumembeddedframework.runtime.win-x64": {
               "target": "Package",
-              "version": "[90.5.7, )"
+              "version": "[89.0.17, )"
             },
             "chromiumembeddedframework.runtime.win-x86": {
               "target": "Package",
-              "version": "[90.5.7, )"
+              "version": "[89.0.17, )"
             }
           },
           "imports": [

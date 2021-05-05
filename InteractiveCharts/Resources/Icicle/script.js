@@ -1,6 +1,6 @@
 ﻿const width = 975;
 const height = 2400
-data = readJSON("flare.json")
+data = readJSON("data.json")
 
 partition = data => d3.partition()
     .size([height, width])

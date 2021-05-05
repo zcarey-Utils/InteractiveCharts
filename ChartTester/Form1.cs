@@ -1,4 +1,5 @@
 ﻿using ChartTester.Sunburst;
+using ChartTester.Icicle;
 using InteractiveCharts;
 using InteractiveCharts.Data.Examples;
 using InteractiveCharts.Sunburst;
@@ -19,6 +20,10 @@ namespace ChartTester {
 			InitializeComponent();
 		}
 
+		private void Form1_Load(object sender, EventArgs e) {
+
+		}
+
 		private void LoadChart<T>() where T : Form, new() {
 			T form = new T();
 			form.Show();
@@ -27,9 +32,6 @@ namespace ChartTester {
 		private void LimitedSunburst_Click(object sender, EventArgs e) => LoadChart<LimitedSunburstForm>();
 		private void Sunburst_Click(object sender, EventArgs e) => LoadChart<SunburstForm>();
 		private void ZoomableSunburst_Click(object sender, EventArgs e) => LoadChart<ZoomableSunburstForm>();
-
-		private void Form1_Load(object sender, EventArgs e) {
-
-		}
+		private void Icicle_Click(object sender, EventArgs e) => LoadChart<IcicleForm>();
 	}
 }

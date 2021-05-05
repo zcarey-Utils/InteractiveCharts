@@ -671,17 +671,7 @@
         },
         {
           "name": "Shapes",
-          "children": [
-            {
-              "name": "Rectangle",
-              "children": [
-                {
-                  "name": "Square",
-                  "value": 19118
-                }
-              ]
-            }
-          ]
+          "value": 19118
         },
         {
           "name": "Sort",

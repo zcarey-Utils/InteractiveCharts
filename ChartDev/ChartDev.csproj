@@ -80,6 +80,9 @@
     <None Update="Chart\fileUtil.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Chart\flare-2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Chart\flare.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -108,7 +111,7 @@
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
   
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="90.5.7" />
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="90.5.7" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="89.0.17" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="89.0.17" />
   </ItemGroup>
 </Project>

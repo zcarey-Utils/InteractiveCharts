@@ -101,14 +101,22 @@
           "buildTransitive/chromiumembeddedframework.runtime.props": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x64/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x64/89.0.17": {
         "type": "package",
         "runtimeTargets": {
-          "runtimes/win-x64/native/chrome_100_percent.pak": {
+          "runtimes/win-x64/native/cef.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/chrome_200_percent.pak": {
+          "runtimes/win-x64/native/cef_100_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cef_200_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cef_extensions.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -117,6 +125,10 @@
             "rid": "win-x64"
           },
           "runtimes/win-x64/native/d3dcompiler_47.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/devtools_resources.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -136,10 +148,6 @@
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/resources.pak": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
           "runtimes/win-x64/native/snapshot_blob.bin": {
             "assetType": "native",
             "rid": "win-x64"
@@ -150,14 +158,22 @@
           }
         }
       },
-      "chromiumembeddedframework.runtime.win-x86/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x86/89.0.17": {
         "type": "package",
         "runtimeTargets": {
-          "runtimes/win-x86/native/chrome_100_percent.pak": {
+          "runtimes/win-x86/native/cef.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
-          "runtimes/win-x86/native/chrome_200_percent.pak": {
+          "runtimes/win-x86/native/cef_100_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cef_200_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cef_extensions.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -166,6 +182,10 @@
             "rid": "win-x86"
           },
           "runtimes/win-x86/native/d3dcompiler_47.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/devtools_resources.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -182,10 +202,6 @@
             "rid": "win-x86"
           },
           "runtimes/win-x86/native/libcef.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
-          },
-          "runtimes/win-x86/native/resources.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -258,23 +274,25 @@
           "buildTransitive/chromiumembeddedframework.runtime.props": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x64/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x64/89.0.17": {
         "type": "package",
         "native": {
-          "runtimes/win-x64/native/chrome_100_percent.pak": {},
-          "runtimes/win-x64/native/chrome_200_percent.pak": {},
+          "runtimes/win-x64/native/cef.pak": {},
+          "runtimes/win-x64/native/cef_100_percent.pak": {},
+          "runtimes/win-x64/native/cef_200_percent.pak": {},
+          "runtimes/win-x64/native/cef_extensions.pak": {},
           "runtimes/win-x64/native/chrome_elf.dll": {},
           "runtimes/win-x64/native/d3dcompiler_47.dll": {},
+          "runtimes/win-x64/native/devtools_resources.pak": {},
           "runtimes/win-x64/native/icudtl.dat": {},
           "runtimes/win-x64/native/libEGL.dll": {},
           "runtimes/win-x64/native/libGLESv2.dll": {},
           "runtimes/win-x64/native/libcef.dll": {},
-          "runtimes/win-x64/native/resources.pak": {},
           "runtimes/win-x64/native/snapshot_blob.bin": {},
           "runtimes/win-x64/native/v8_context_snapshot.bin": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x86/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x86/89.0.17": {
         "type": "package"
       },
       "System.Text.Json/5.0.0": {
@@ -386,14 +404,22 @@
           "buildTransitive/chromiumembeddedframework.runtime.props": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x64/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x64/89.0.17": {
         "type": "package",
         "runtimeTargets": {
-          "runtimes/win-x64/native/chrome_100_percent.pak": {
+          "runtimes/win-x64/native/cef.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/chrome_200_percent.pak": {
+          "runtimes/win-x64/native/cef_100_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cef_200_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cef_extensions.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -402,6 +428,10 @@
             "rid": "win-x64"
           },
           "runtimes/win-x64/native/d3dcompiler_47.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/devtools_resources.pak": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -421,10 +451,6 @@
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/resources.pak": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
           "runtimes/win-x64/native/snapshot_blob.bin": {
             "assetType": "native",
             "rid": "win-x64"
@@ -435,14 +461,22 @@
           }
         }
       },
-      "chromiumembeddedframework.runtime.win-x86/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x86/89.0.17": {
         "type": "package",
         "runtimeTargets": {
-          "runtimes/win-x86/native/chrome_100_percent.pak": {
+          "runtimes/win-x86/native/cef.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
-          "runtimes/win-x86/native/chrome_200_percent.pak": {
+          "runtimes/win-x86/native/cef_100_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cef_200_percent.pak": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cef_extensions.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -451,6 +485,10 @@
             "rid": "win-x86"
           },
           "runtimes/win-x86/native/d3dcompiler_47.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/devtools_resources.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -467,10 +505,6 @@
             "rid": "win-x86"
           },
           "runtimes/win-x86/native/libcef.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
-          },
-          "runtimes/win-x86/native/resources.pak": {
             "assetType": "native",
             "rid": "win-x86"
           },
@@ -533,23 +567,25 @@
           "buildTransitive/chromiumembeddedframework.runtime.props": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x64/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x64/89.0.17": {
         "type": "package",
         "native": {
-          "runtimes/win-x64/native/chrome_100_percent.pak": {},
-          "runtimes/win-x64/native/chrome_200_percent.pak": {},
+          "runtimes/win-x64/native/cef.pak": {},
+          "runtimes/win-x64/native/cef_100_percent.pak": {},
+          "runtimes/win-x64/native/cef_200_percent.pak": {},
+          "runtimes/win-x64/native/cef_extensions.pak": {},
           "runtimes/win-x64/native/chrome_elf.dll": {},
           "runtimes/win-x64/native/d3dcompiler_47.dll": {},
+          "runtimes/win-x64/native/devtools_resources.pak": {},
           "runtimes/win-x64/native/icudtl.dat": {},
           "runtimes/win-x64/native/libEGL.dll": {},
           "runtimes/win-x64/native/libGLESv2.dll": {},
           "runtimes/win-x64/native/libcef.dll": {},
-          "runtimes/win-x64/native/resources.pak": {},
           "runtimes/win-x64/native/snapshot_blob.bin": {},
           "runtimes/win-x64/native/v8_context_snapshot.bin": {}
         }
       },
-      "chromiumembeddedframework.runtime.win-x86/90.5.7": {
+      "chromiumembeddedframework.runtime.win-x86/89.0.17": {
         "type": "package"
       }
     }
@@ -786,52 +822,56 @@
         "runtime.json"
       ]
     },
-    "chromiumembeddedframework.runtime.win-x64/90.5.7": {
-      "sha512": "vlc/K7YU4wysG9vAiotXdh8LCZh8FLLAr9PE9PpabybshwFV2JZ/FzZHt7e4QkiYXKjpiLXN9rCL6LfzvEP2jQ==",
+    "chromiumembeddedframework.runtime.win-x64/89.0.17": {
+      "sha512": "RLZ2VWz1MMwOB1HoyFI0gf/GiNFf0Tda8RaQawqWR2Ny+jQaI09MnVf06OeLkzwLXTJIN+zPtlR6bIM51amlig==",
       "type": "package",
-      "path": "chromiumembeddedframework.runtime.win-x64/90.5.7",
+      "path": "chromiumembeddedframework.runtime.win-x64/89.0.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "README.txt",
-        "chromiumembeddedframework.runtime.win-x64.90.5.7.nupkg.sha512",
+        "chromiumembeddedframework.runtime.win-x64.89.0.17.nupkg.sha512",
         "chromiumembeddedframework.runtime.win-x64.nuspec",
         "images/cef128x128.png",
-        "runtimes/win-x64/native/chrome_100_percent.pak",
-        "runtimes/win-x64/native/chrome_200_percent.pak",
+        "runtimes/win-x64/native/cef.pak",
+        "runtimes/win-x64/native/cef_100_percent.pak",
+        "runtimes/win-x64/native/cef_200_percent.pak",
+        "runtimes/win-x64/native/cef_extensions.pak",
         "runtimes/win-x64/native/chrome_elf.dll",
         "runtimes/win-x64/native/d3dcompiler_47.dll",
+        "runtimes/win-x64/native/devtools_resources.pak",
         "runtimes/win-x64/native/icudtl.dat",
         "runtimes/win-x64/native/libEGL.dll",
         "runtimes/win-x64/native/libGLESv2.dll",
         "runtimes/win-x64/native/libcef.dll",
-        "runtimes/win-x64/native/resources.pak",
         "runtimes/win-x64/native/snapshot_blob.bin",
         "runtimes/win-x64/native/v8_context_snapshot.bin"
       ]
     },
-    "chromiumembeddedframework.runtime.win-x86/90.5.7": {
-      "sha512": "hx6Jyd3ggmM8+u7eEqJX374YeDTYUQvwfW1u8twqpJ96cebkMFTwTHiNyRE4sTKTPNa4m944XkfLVOhDTteRng==",
+    "chromiumembeddedframework.runtime.win-x86/89.0.17": {
+      "sha512": "+TcLK+fCDfq4qzFWI+shP5GNbBpJsPpV3OeoCEwvn6okSTcC77Gv2N6JmbxceAHMMlbQ00NnLMgSIHxxQvPGdw==",
       "type": "package",
-      "path": "chromiumembeddedframework.runtime.win-x86/90.5.7",
+      "path": "chromiumembeddedframework.runtime.win-x86/89.0.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "README.txt",
-        "chromiumembeddedframework.runtime.win-x86.90.5.7.nupkg.sha512",
+        "chromiumembeddedframework.runtime.win-x86.89.0.17.nupkg.sha512",
         "chromiumembeddedframework.runtime.win-x86.nuspec",
         "images/cef128x128.png",
-        "runtimes/win-x86/native/chrome_100_percent.pak",
-        "runtimes/win-x86/native/chrome_200_percent.pak",
+        "runtimes/win-x86/native/cef.pak",
+        "runtimes/win-x86/native/cef_100_percent.pak",
+        "runtimes/win-x86/native/cef_200_percent.pak",
+        "runtimes/win-x86/native/cef_extensions.pak",
         "runtimes/win-x86/native/chrome_elf.dll",
         "runtimes/win-x86/native/d3dcompiler_47.dll",
+        "runtimes/win-x86/native/devtools_resources.pak",
         "runtimes/win-x86/native/icudtl.dat",
         "runtimes/win-x86/native/libEGL.dll",
         "runtimes/win-x86/native/libGLESv2.dll",
         "runtimes/win-x86/native/libcef.dll",
-        "runtimes/win-x86/native/resources.pak",
         "runtimes/win-x86/native/snapshot_blob.bin",
         "runtimes/win-x86/native/v8_context_snapshot.bin"
       ]
@@ -862,13 +902,13 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "CefSharp.WinForms.NetCore >= 89.0.170",
-      "chromiumembeddedframework.runtime.win-x64 >= 90.5.7",
-      "chromiumembeddedframework.runtime.win-x86 >= 90.5.7"
+      "chromiumembeddedframework.runtime.win-x64 >= 89.0.17",
+      "chromiumembeddedframework.runtime.win-x86 >= 89.0.17"
     ],
     "net5.0-windows7.0": [
       "CefSharp.WinForms.NetCore >= 89.0.170",
-      "chromiumembeddedframework.runtime.win-x64 >= 90.5.7",
-      "chromiumembeddedframework.runtime.win-x86 >= 90.5.7"
+      "chromiumembeddedframework.runtime.win-x64 >= 89.0.17",
+      "chromiumembeddedframework.runtime.win-x86 >= 89.0.17"
     ]
   },
   "packageFolders": {
@@ -928,11 +968,11 @@
           },
           "chromiumembeddedframework.runtime.win-x64": {
             "target": "Package",
-            "version": "[90.5.7, )"
+            "version": "[89.0.17, )"
           },
           "chromiumembeddedframework.runtime.win-x86": {
             "target": "Package",
-            "version": "[90.5.7, )"
+            "version": "[89.0.17, )"
           }
         },
         "imports": [
@@ -970,11 +1010,11 @@
           },
           "chromiumembeddedframework.runtime.win-x64": {
             "target": "Package",
-            "version": "[90.5.7, )"
+            "version": "[89.0.17, )"
           },
           "chromiumembeddedframework.runtime.win-x86": {
             "target": "Package",
-            "version": "[90.5.7, )"
+            "version": "[89.0.17, )"
           }
         },
         "imports": [

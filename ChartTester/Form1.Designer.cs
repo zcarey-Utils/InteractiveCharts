@@ -29,13 +29,16 @@ namespace ChartTester {
 			this.Sunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.ZoomableSunburst = new System.Windows.Forms.ToolStripMenuItem();
 			this.LimitedSunburst = new System.Windows.Forms.ToolStripMenuItem();
+			this.IcicleMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.Icicle = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SunburstMenu});
+            this.SunburstMenu,
+            this.IcicleMenu});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(805, 24);
@@ -73,6 +76,21 @@ namespace ChartTester {
 			this.LimitedSunburst.Text = "LimitedSunburst";
 			this.LimitedSunburst.Click += new System.EventHandler(this.LimitedSunburst_Click);
 			// 
+			// IcicleMenu
+			// 
+			this.IcicleMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Icicle});
+			this.IcicleMenu.Name = "IcicleMenu";
+			this.IcicleMenu.Size = new System.Drawing.Size(46, 20);
+			this.IcicleMenu.Text = "Icicle";
+			// 
+			// Icicle
+			// 
+			this.Icicle.Name = "Icicle";
+			this.Icicle.Size = new System.Drawing.Size(101, 22);
+			this.Icicle.Text = "Icicle";
+			this.Icicle.Click += new System.EventHandler(this.Icicle_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -96,6 +114,8 @@ namespace ChartTester {
 		private System.Windows.Forms.ToolStripMenuItem Sunburst;
 		private System.Windows.Forms.ToolStripMenuItem ZoomableSunburst;
 		private System.Windows.Forms.ToolStripMenuItem LimitedSunburst;
+		private System.Windows.Forms.ToolStripMenuItem IcicleMenu;
+		private System.Windows.Forms.ToolStripMenuItem Icicle;
 	}
 }
 
