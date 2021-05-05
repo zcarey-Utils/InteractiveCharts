@@ -18,6 +18,8 @@
     <None Remove="Resources\LimitedSunburst\limitedSunburst.js" />
     <None Remove="Resources\Sunburst\index.html" />
     <None Remove="Resources\Sunburst\script.js" />
+    <None Remove="Resources\ZoomableIcicle\index.html" />
+    <None Remove="Resources\ZoomableIcicle\script.js" />
     <None Remove="Resources\ZoomableSunburst\index.html" />
     <None Remove="Resources\ZoomableSunburst\zoomableSunburst.js" />
   </ItemGroup>
@@ -51,6 +53,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Sunburst\script.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ZoomableIcicle\index.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ZoomableIcicle\script.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ZoomableSunburst\index.html">

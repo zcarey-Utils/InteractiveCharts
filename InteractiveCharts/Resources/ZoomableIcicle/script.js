@@ -1,6 +1,6 @@
 ﻿const width = 975;
 const height = 1200
-data = readJSON("flare.json")
+data = readJSON("data.json")
 
 partition = data => {
     const root = d3.hierarchy(data)

@@ -33,5 +33,6 @@ namespace ChartTester {
 		private void Sunburst_Click(object sender, EventArgs e) => LoadChart<SunburstForm>();
 		private void ZoomableSunburst_Click(object sender, EventArgs e) => LoadChart<ZoomableSunburstForm>();
 		private void Icicle_Click(object sender, EventArgs e) => LoadChart<IcicleForm>();
+		private void ZoomableIcicle_Click(object sender, EventArgs e) => LoadChart<ZoomableIcicleForm>();
 	}
 }

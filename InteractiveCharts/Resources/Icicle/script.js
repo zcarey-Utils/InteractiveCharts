@@ -13,7 +13,7 @@ color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length 
 format = d3.format(",d")
 
 const root = partition(data);
-root.each(d => d.current = d);
+
 /*const svg = d3.create("svg")
     .attr("viewBox", [0, 0, width, height])
     .style("font", "10px sans-serif");
