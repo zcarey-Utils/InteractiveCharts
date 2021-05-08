@@ -84,11 +84,6 @@ container.on('mousemove', function (ev) {
         .style('transform', "translate(-".concat(mousePos[0] / window.innerWidth * 100, "%, " + dy + "px)")); // adjust horizontal position to not exceed canvas boundaries
 });
 
-//Reset focus by clicking on the canvas
-svg.on('click', function () {
-    focusOn(root); // Reset zoom on canvas click
-});
-
 //Tooltip title
 if ((typeof tooltipTitle !== "function") || (tooltipTitle.length !== 2)) {
     tooltipTitle = function (data, d) {
@@ -105,6 +100,11 @@ if ((typeof tooltipContent !== "function") || (tooltipContent.length !== 2)) {
         return "Size: " + format(d.value);
     };
 }
+
+//Reset focus by clicking on the canvas
+svg.on('click', function () {
+    focusOn(root); // Reset zoom on canvas click
+});
 
 const g = svg.append("g");
 

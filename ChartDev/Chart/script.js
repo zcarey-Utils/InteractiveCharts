@@ -1,89 +1,183 @@
-﻿const width = 975;
-const height = 1200
+﻿const width = 640;
+breadcrumbHeight = 30;
+breadcrumbWidth = 75;
+radius = width / 2;
 data = readJSON("flare.json")
 
-partition = data => {
-    const root = d3.hierarchy(data)
-        .sum(d => d.value)
-        .sort((a, b) => b.height - a.height || b.value - a.value);
-    return d3.partition()
-        .size([height, (root.height + 1) * width / 3])
-        (root);
-}
+partition = data =>
+    d3.partition().size([2 * Math.PI, radius * radius])(
+        d3
+            .hierarchy(data)
+            .sum(d => d.value)
+            .sort((a, b) => b.value - a.value)
+    )
 
 color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 format = d3.format(",d")
 
 const root = partition(data);
-let focus = root;
+
+arc = d3
+    .arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .padAngle(1 / radius)
+    .padRadius(radius)
+    .innerRadius(d => Math.sqrt(d.y0))
+    .outerRadius(d => Math.sqrt(d.y1) - 1)
+
+mousearc = d3
+    .arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .innerRadius(d => Math.sqrt(d.y0))
+    .outerRadius(radius)
 
 /* const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height])
       .style("font", "10px sans-serif");
 */
 
-const svg = d3.select("div#container")
+const vis = d3.select("div#container")
+//    .append("div").classed("vis-container", true)
+//    .style("position", "relative");
+
+const svg = vis.append("div").classed("sunburst-container", true)
+ //   .style("position", "absolute")
     .append("svg")
-    .attr("viewBox", [0, 0, width, height])
-    .style("font", "10px sans-serif");
+    .attr("viewBox", [-radius, -radius, width, width])
+    .style("font", "12px sans-serif");
 
-const cell = svg
-    .selectAll("g")
-    .data(root.descendants())
-    .join("g")
-    .attr("transform", d => `translate(${d.y0},${d.x0})`);
+const breadScale = (width / (breadcrumbWidth * 10));
 
-const rect = cell.append("rect")
-    .attr("width", d => d.y1 - d.y0 - 1)
-    .attr("height", d => rectHeight(d))
-    .attr("fill-opacity", 0.6)
-    .attr("fill", d => {
-        if (!d.depth) return "#ccc";
-        while (d.depth > 1) d = d.parent;
-        return color(d.data.name);
+const svgBread = vis.append("div").classed("breadcrumbs-container", true)
+ //   .style("position", "absolute")
+    .append("svg")
+    .attr("viewBox", [0, 0, breadcrumbWidth * 10, breadcrumbHeight])
+    .style("font", "12px sans-serif")
+    .style("background", "#000")
+    .style("margin", "5px"); 
+
+// Make this into a view, so that the currently hovered sequence is available to the breadcrumb
+var element = { sequence: [], percentage: 0.0 };
+
+const label = svg
+    .append("text")
+    .attr("text-anchor", "middle")
+    .attr("fill", "#888")
+    .style("visibility", "hidden");
+
+label
+    .append("tspan")
+    .attr("class", "percentage")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("dy", "-0.1em")
+    .attr("font-size", "3em")
+    .text("");
+
+label
+    .append("tspan")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("dy", "1.5em")
+    .text("of visits begin with this sequence");
+
+const path = svg
+    .append("g")
+    .selectAll("path")
+    .data(
+        root.descendants().filter(d => {
+            // Don't draw the root node, and for efficiency, filter out nodes that would be too small to see
+            return d.depth && d.x1 - d.x0 > 0.001;
+        })
+    )
+    .join("path")
+    .attr("fill", d => color(d.data.name))
+    .attr("d", arc);
+
+svg
+    .append("g")
+    .attr("fill", "none")
+    .attr("pointer-events", "all")
+    .on("mouseleave", () => {
+        path.attr("fill-opacity", 1);
+        label.style("visibility", "hidden");
+        // Update the value of this view
+        element = { sequence: [], percentage: 0.0 };
+        //element.dispatchEvent(new CustomEvent("input"));
+        drawBreadcrumbs();
     })
-    .style("cursor", "pointer")
-    .on("click", clicked);
-
-const text = cell.append("text")
-    .style("user-select", "none")
-    .attr("pointer-events", "none")
-    .attr("x", 4)
-    .attr("y", 13)
-    .attr("fill-opacity", d => +labelVisible(d));
-
-text.append("tspan")
-    .text(d => d.data.name);
-
-const tspan = text.append("tspan")
-    .attr("fill-opacity", d => labelVisible(d) * 0.7)
-    .text(d => ` ${format(d.value)}`);
-
-cell.append("title")
-    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-
-function clicked(event, p) {
-    focus = focus === p ? p = p.parent : p;
-
-    root.each(d => d.target = {
-        x0: (d.x0 - p.x0) / (p.x1 - p.x0) * height,
-        x1: (d.x1 - p.x0) / (p.x1 - p.x0) * height,
-        y0: d.y0 - p.y0,
-        y1: d.y1 - p.y0
+    .selectAll("path")
+    .data(
+        root.descendants().filter(d => {
+            // Don't draw the root node, and for efficiency, filter out nodes that would be too small to see
+            return d.depth && d.x1 - d.x0 > 0.001;
+        })
+    )
+    .join("path")
+    .attr("d", mousearc)
+    .on("mouseenter", (event, d) => {
+        // Get the ancestors of the current segment, minus the root
+        const sequence = d
+            .ancestors()
+            .reverse()
+            .slice(1);
+        // Highlight the ancestors
+        path.attr("fill-opacity", node =>
+            sequence.indexOf(node) >= 0 ? 1.0 : 0.3
+        );
+        const percentage = ((100 * d.value) / root.value).toPrecision(3);
+        label
+            .style("visibility", null)
+            .select(".percentage")
+            .text(percentage + "%");
+        // Update the value of this view with the currently hovered sequence and percentage
+        element = { sequence: sequence, percentage: percentage };
+        //element.dispatchEvent(new CustomEvent("input"));
+        drawBreadcrumbs();
     });
 
-    const t = cell.transition().duration(750)
-        .attr("transform", d => `translate(${d.target.y0},${d.target.x0})`);
-
-    rect.transition(t).attr("height", d => rectHeight(d.target));
-    text.transition(t).attr("fill-opacity", d => +labelVisible(d.target));
-    tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.7);
+function breadcrumbPoints(d, i) {
+    const tipWidth = 10;
+    const points = [];
+    points.push("0,0");
+    points.push(`${breadcrumbWidth},0`);
+    points.push(`${breadcrumbWidth + tipWidth},${breadcrumbHeight / 2}`);
+    points.push(`${breadcrumbWidth},${breadcrumbHeight}`);
+    points.push(`0,${breadcrumbHeight}`);
+    if (i > 0) {
+        // Leftmost breadcrumb; don't include 6th vertex.
+        points.push(`${tipWidth},${breadcrumbHeight / 2}`);
+    }
+    return points.join(" ");
 }
 
-function rectHeight(d) {
-    return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2);
-}
+function drawBreadcrumbs() { //TODO just pass the breadcrumb parameters
+    g = svgBread
+        .selectAll("g")
+        .data(element.sequence)
+        .join("g")
+        .attr("transform", (d, i) => `translate(${i * breadcrumbWidth}, 0)`);
 
-function labelVisible(d) {
-    return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 16;
+    g.append("polygon")
+        .attr("points", breadcrumbPoints)
+        .attr("fill", d => color(d.data.name))
+        .attr("stroke", "white");
+
+    g.append("text")
+        .attr("x", (breadcrumbWidth + 10) / 2)
+        .attr("y", 15)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .text(d => d.data.name);
+
+    svgBread
+        .append("text")
+        .text(element.percentage > 0 ? element.percentage + "%" : "")
+        .attr("x", (element.sequence.length + 0.5) * breadcrumbWidth)
+        .attr("y", breadcrumbHeight / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle");
 }
