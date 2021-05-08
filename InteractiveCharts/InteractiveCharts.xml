@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InteractiveCharts</name>
+    </assembly>
+    <members>
+        <member name="F:InteractiveCharts.Chart.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:InteractiveCharts.Chart.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:InteractiveCharts.Chart.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:InteractiveCharts.ControlsExtensions.InvokeOnUiThreadIfRequired(System.Windows.Forms.Control,System.Action)">
+            <summary>
+            Executes the Action asynchronously on the UI thread, does not block execution on the calling thread.
+            </summary>
+            <param name="control">the control for which the update is required</param>
+            <param name="action">action to be performed on the control</param>
+        </member>
+        <member name="T:InteractiveCharts.CustomSchemeHandlerFactory">
+            <summary>
+            FolderSchemeHandlerFactory is a very simple scheme handler that allows you
+            to map requests for urls to a folder on your file system. For example
+            creating a setting the rootFolder to c:\projects\CefSharp\CefSharp.Example\Resources
+            registering the scheme handler
+            </summary>
+        </member>
+        <member name="F:InteractiveCharts.CustomSchemeHandlerFactory.GetMimeTypeDelegate">
+            <summary>
+            <see cref="M:CefSharp.ResourceHandler.GetMimeType(System.String)"/> is being deprecated in favour of using
+            Chromiums native mimeType lookup which is accessible using Cef.GetMimeType, this method is however
+            not directly available as it exists in CefSharp.Core, to get around this we set
+            this static delegate with a reference to Cef.GetMimeType when Cef.Initialize is called.
+            </summary>
+        </member>
+        <member name="M:InteractiveCharts.CustomSchemeHandlerFactory.#ctor(System.String,System.String)">
+            <summary>
+            Initialize a new instance of FolderSchemeHandlerFactory
+            </summary>
+            <param name="rootFolder">Root Folder where all your files exist, requests cannot be made outside of this folder</param>
+            <param name="schemeName">if not null then schemeName checking will be implemented</param>
+            <param name="hostName">if not null then hostName checking will be implemented</param>
+            <param name="defaultPage">default page if no page specified, defaults to index.html</param>
+            <param name="resourceFileShare">file share mode used to open resources, defaults to FileShare.Read</param>
+        </member>
+        <member name="M:InteractiveCharts.CustomSchemeHandlerFactory.CefSharp#ISchemeHandlerFactory#Create(CefSharp.IBrowser,CefSharp.IFrame,System.String,CefSharp.IRequest)">
+            <summary>
+            If the file requested is within the rootFolder then a IResourceHandler reference to the file requested will be returned
+            otherwise a 404 ResourceHandler will be returned.
+            </summary>
+            <param name="browser">the browser window that originated the
+            request or null if the request did not originate from a browser window
+            (for example, if the request came from CefURLRequest).</param>
+            <param name="frame">frame that originated the request
+            or null if the request did not originate from a browser window
+            (for example, if the request came from CefURLRequest).</param>
+            <param name="schemeName">the scheme name</param>
+            <param name="request">The request. (will not contain cookie data)</param>
+            <returns>
+            A IResourceHandler
+            </returns>
+        </member>
+        <member name="M:InteractiveCharts.CustomSchemeHandlerFactory.Create(CefSharp.IBrowser,CefSharp.IFrame,System.String,CefSharp.IRequest)">
+            <summary>
+            If the file requested is within the rootFolder then a IResourceHandler reference to the file requested will be returned
+            otherwise a 404 ResourceHandler will be returned.
+            </summary>
+            <param name="browser">the browser window that originated the
+            request or null if the request did not originate from a browser window
+            (for example, if the request came from CefURLRequest).</param>
+            <param name="frame">frame that originated the request
+            or null if the request did not originate from a browser window
+            (for example, if the request came from CefURLRequest).</param>
+            <param name="schemeName">the scheme name</param>
+            <param name="request">The request. (will not contain cookie data)</param>
+            <returns>
+            A IResourceHandler
+            </returns>
+        </member>
+        <member name="T:InteractiveCharts.Data.GroupedData.GroupCategory">
+            <inheritdoc cref="T:InteractiveCharts.Data.GroupedData.GroupValue"/>
+        </member>
+        <member name="T:InteractiveCharts.Data.GroupedData.GroupValue">
+            <summary>
+            <para>
+            Sunburst data works in a tree, where <see cref="T:InteractiveCharts.Data.GroupedData.GroupValue"/> contains the actual data amounts and <see cref="T:InteractiveCharts.Data.GroupedData.GroupCategory"/> groups the amounts together. <br></br>
+            <br></br>.....Category
+            <br></br>............../\
+            <br></br>........../........\
+            <br></br>..Category..Value
+            <br></br>......./\  
+            <br></br>.../........\
+            <br></br>.Value..Value
+            </para>
+            </summary>
+        </member>
+        <member name="M:InteractiveCharts.Data.GroupedData.IGroupedData.PruneData">
+            <summary>
+            Prune any children that do not have a value assigned to them, and call this function in the other children.
+            </summary>
+        </member>
+        <member name="P:InteractiveCharts.Sunburst.SunburstGraph.TooltipTitle">
+            <summary>
+            NOTE: This is Javascript code, thus the code is not checked for errors until runtime.
+            </summary>
+        </member>
+        <member name="P:InteractiveCharts.Sunburst.SunburstGraph.TooltipContent">
+            <summary>
+            NOTE: This is Javascript code, thus the code is not checked for errors until runtime.
+            </summary>
+        </member>
+    </members>
+</doc>

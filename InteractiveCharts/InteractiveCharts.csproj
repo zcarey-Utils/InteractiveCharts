@@ -5,6 +5,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
+    <Description>Display interactive graphs by utilizing CefSharp to render web-based javascript graphs.</Description>
+    <PackageProjectUrl>https://github.com/zcarey-Utils/InteractiveCharts</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zcarey-Utils/InteractiveCharts</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>C:\Users\zachc\source\repos\InteractiveCharts\InteractiveCharts\InteractiveCharts.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
