@@ -23,6 +23,14 @@ namespace InteractiveCharts.Data.GroupedData {
 			elements.AddRange(data);
 		}
 
+		public void Add(IGroupedData data) {
+			this.elements.Add(data);
+		}
+
+		public void Remove(IGroupedData data) {
+			this.elements.Remove(data);
+		}
+
 		public void PruneData() {
 			List<IGroupedData> pruning = new List<IGroupedData>();
 			foreach(IGroupedData element in elements) {
